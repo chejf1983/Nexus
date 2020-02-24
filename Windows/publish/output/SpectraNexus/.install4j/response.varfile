@@ -1,9 +1,0 @@
-#install4j response file for SpectraNexus 1.0.0.1
-#Fri Oct 25 16:42:16 CST 2019
-sys.programGroupAllUsers$Boolean=true
-createDesktopLinkAction$Boolean=true
-sys.programGroupDisabled$Boolean=false
-sys.languageId=en
-sys.programGroupName=SpectraNexus
-sys.adminRights$Boolean=true
-sys.installationDir=D\:\\Git\\code\\java_app\\singlebranch6.0\\Spectrual\\Nexus_jg\\Windows\\publish\\output

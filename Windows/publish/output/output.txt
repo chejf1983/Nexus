@@ -1,3 +1,0 @@
-# List of generated media files. The columns are tab-separated:
-# id | media file type | display name | media file path
-179	windows	Windows	D:\code\nahon\singlebranch6.0\Spectrual\Double2.0\Windows\publish\output\SpectraNexus_dx_windows_1_0_0_1.exe
