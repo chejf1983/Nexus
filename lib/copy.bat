@@ -16,8 +16,6 @@ echo copy jreechart封装图表开发包
 copy ..\..\charttable\spchart\store\sp_chart.jar .\
 echo copy jtable封装图表开发包
 copy ..\..\charttable\sptable\dist\sptable.jar .\
-echo copy spdev_dll 驱动
-copy ..\..\sp_drv\dev_win_drv\dist\dev_win_drv.jar .\
 
 echo copy 自定义平台开发包
 copy ..\..\..\PlatForm\commonbean\dist\commonbean.jar .\

@@ -1,0 +1,3 @@
+# List of generated media files. The columns are tab-separated:
+# id | media file type | display name | media file path
+179	windows	Windows	D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\SpectraNexus_windows_1_0_0_1.exe

@@ -1,0 +1,449 @@
+[INFO] logger started at Fri Oct 25 16:41:51 CST 2019
+[INFO] executable name: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\SpectraNexus_windows_1_0_0_1.exe
+[INFO] install4j version: 5.1.15 (build 5739)
+[INFO] Properties: 
+-- listing properties --
+java.runtime.name=Java(TM) SE Runtime Environment
+exe4j.moduleName=D:\Git\code\java_app\singlebranch6.0\...
+sun.boot.library.path=c:\users\chejf\appdata\local\temp\e4j...
+exe4j.semaphoreName=Local\d:_git_code_java_app_singlebran...
+java.vm.version=25.121-b13
+java.vm.vendor=Oracle Corporation
+java.vendor.url=http://java.oracle.com/
+path.separator=;
+exe4j.consoleCodepage=cp0
+java.vm.name=Java HotSpot(TM) Client VM
+file.encoding.pkg=sun.io
+user.script=
+user.country=CN
+sun.os.patch.level=
+install4j.exeDir=D:\Git\code\java_app\singlebranch6.0\...
+java.vm.specification.name=Java Virtual Machine Specification
+user.dir=C:\Users\chejf\AppData\Local\Temp\e4j...
+java.runtime.version=1.8.0_121-b13
+java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment
+java.endorsed.dirs=c:\users\chejf\appdata\local\temp\e4j...
+os.arch=x86
+java.io.tmpdir=C:\Users\chejf\AppData\Local\Temp\
+line.separator=
+
+java.vm.specification.vendor=Oracle Corporation
+user.variant=
+exe4j.tempDir=C:\Users\chejf\AppData\Local\Temp\e4j...
+os.name=Windows 10
+sun.java2d.noddraw=true
+sun.jnu.encoding=GBK
+java.library.path=D:\tool\install4j_windows-x64_5_1_15_...
+sun.awt.enableExtraMouseButtons=true
+java.specification.name=Java Platform API Specification
+java.class.version=52.0
+sun.management.compiler=HotSpot Client Compiler
+exe4j.isInstall4j=true
+os.version=10.0
+user.home=C:\Users\chejf
+user.timezone=Asia/Shanghai
+java.awt.printerjob=sun.awt.windows.WPrinterJob
+java.specification.version=1.8
+file.encoding=GBK
+user.name=chejf
+java.class.path=C:\Users\chejf\AppData\Local\Temp\e4j...
+java.vm.specification.version=1.8
+sun.arch.data.model=32
+java.home=c:\users\chejf\appdata\local\temp\e4j...
+sun.java.command=D:\Git\code\java_app\singlebranch6.0\...
+exe4j.launchName=D:\Git\code\java_app\SINGLE~1.0\SPECT...
+java.specification.vendor=Oracle Corporation
+user.language=zh
+awt.toolkit=sun.awt.windows.WToolkit
+java.vm.info=mixed mode
+exe4j.unextractedPosition=36494682
+java.version=1.8.0_121
+java.ext.dirs=c:\users\chejf\appdata\local\temp\e4j...
+sun.boot.class.path=c:\users\chejf\appdata\local\temp\e4j...
+java.vendor=Oracle Corporation
+install4j.appDir=C:\Users\chejf\AppData\Local\Temp\
+file.separator=\
+java.vendor.url.bug=http://bugreport.sun.com/bugreport/
+sun.cpu.endian=little
+sun.io.unicode.encoding=UnicodeLittle
+sun.desktop=windows
+sun.cpu.isalist=pentium_pro+mmx pentium_pro pentium+m...
+[INFO] com.install4j.runtime.beans.actions.misc.RequestPrivilegesAction [ID 180]: Execute action
+       Property failIfNotObtainedMac: true
+       Property failIfNotObtainedWin: true
+       Property failIfNotRootUnix: false
+       Property obtainIfAdminMac: false
+       Property obtainIfAdminWin: true
+       Property obtainIfNormalMac: false
+       Property obtainIfNormalWin: false
+       Property allRequested: false
+       Property rollbackSupported: false
+       Variable changed: sys.adminRights=true[class java.lang.Boolean]
+       Execute action successful after 4071 ms
+[INFO] com.install4j.runtime.beans.screens.StartupScreen [ID 1]: command: move 1 screens, executing actions, checking condition
+[INFO] com.install4j.runtime.beans.screens.WelcomeScreen [ID 2]: Show screen
+       thread name AWT-EventQueue-0
+[INFO] Using communication backend com.install4j.runtime.installer.platform.win32.Win32CommunicationBackend
+[INFO] com.install4j.runtime.beans.screens.WelcomeScreen [ID 2]: command: move 1 screens, executing actions, checking condition
+[INFO] com.install4j.runtime.beans.screens.InstallationDirectoryScreen [ID 3]: Show screen
+       Variable changed: sys.installationDir=D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output[class java.lang.String]
+       checking writable with maximum
+[INFO] com.install4j.runtime.beans.actions.misc.LoadResponseFileAction [ID 4]: Execute action
+       Property file: null
+       Property overwrite: true
+       Property excludedVariables: [sys.installationDir]
+       Property rollbackSupported: true
+       Response file D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\response.varfile does not exist
+       Execute action successful after 15 ms
+[INFO] com.install4j.runtime.beans.screens.InstallationDirectoryScreen [ID 3]: command: move 1 screens, executing actions, checking condition
+[INFO] com.install4j.runtime.beans.screens.StandardProgramGroupScreen [ID 6]: Show screen
+       Variable changed: sys.programGroupName=SpectraNexus[class java.lang.String]
+       Variable changed: sys.programGroupDisabled=false[class java.lang.Boolean]
+       Variable changed: sys.programGroupAllUsers=true[class java.lang.Boolean]
+[INFO] com.install4j.runtime.beans.screens.StandardProgramGroupScreen [ID 6]: command: move 1 screens, executing actions, checking condition
+[INFO] com.install4j.runtime.beans.screens.AdditionalConfirmationsScreen [ID 225]: Show screen
+       Variable changed: createDesktopLinkAction=true[class java.lang.Boolean]
+[INFO] com.install4j.runtime.beans.screens.AdditionalConfirmationsScreen [ID 225]: command: move 1 screens, executing actions, checking condition
+[INFO] com.install4j.runtime.beans.screens.InstallationScreen [ID 7]: Show screen
+[INFO] com.install4j.runtime.beans.actions.InstallFilesAction [ID 8]: Execute action
+       Property installRuntime: true
+       Property checkFreeSpace: true
+       Property sizeCalculatorScript: null
+       Property saveDownloadedFiles: false
+       Property updateBundledJre: true
+       Property validateApplicationId: false
+       Property triggerReboot: true
+       Property showFileNames: true
+       Property fileFilterScript: null
+       Property delay: false
+       Property directoryResolverScript: null
+       Property rollbackSupported: true
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\awt.dll; size: 1182784 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:34 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\bci.dll; size: 15424 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\client\jvm.dll; size: 3864128 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\client\Xusage.txt; size: 1423 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\dcpr.dll; size: 142912 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\decora_sse.dll; size: 64064 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\deploy.dll; size: 453184 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:35 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\dtplugin\deployJava1.dll; size: 826432 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\dtplugin\npdeployJava1.dll; size: 908352 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\dt_shmem.dll; size: 25152 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\dt_socket.dll; size: 21568 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\eula.dll; size: 109120 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\fontmanager.dll; size: 223296 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\fxplugins.dll; size: 152640 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\glass.dll; size: 200768 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\glib-lite.dll; size: 400960 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\gstreamer-lite.dll; size: 514624 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\hprof.dll; size: 132160 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\instrument.dll; size: 115776 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\j2pcsc.dll; size: 16448 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\j2pkcs11.dll; size: 51264 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jaas_nt.dll; size: 19520 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jabswitch.exe; size: 30784 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\java-rmi.exe; size: 15936 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\java.dll; size: 127040 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\java.exe; size: 191040 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:36 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\JavaAccessBridge-32.dll; size: 128064 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:34 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\javacpl.cpl; size: 160256 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:36 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\javacpl.exe; size: 70208 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\javafx_font.dll; size: 57408 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\javafx_font_t2k.dll; size: 446528 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\javafx_iio.dll; size: 126016 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\javaw.exe; size: 191552 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\javaws.exe; size: 268864 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\java_crw_demo.dll; size: 23616 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jawt.dll; size: 13888 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\JAWTAccessBridge-32.dll; size: 14912 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:34 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jdwp.dll; size: 164416 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:36 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jfr.dll; size: 22592 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jfxmedia.dll; size: 115264 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jfxwebkit.dll; size: 31896640 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:37 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jjs.exe; size: 15936 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jli.dll; size: 158784 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jp2iexp.dll; size: 207424 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jp2launcher.exe; size: 83008 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jp2native.dll; size: 19008 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jp2ssv.dll; size: 186944 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jpeg.dll; size: 145984 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jsdt.dll; size: 16448 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jsound.dll; size: 30784 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\jsoundds.dll; size: 27712 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\kcms.dll; size: 178240 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\keytool.exe; size: 15936 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\kinit.exe; size: 15936 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\klist.exe; size: 15936 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\ktab.exe; size: 15936 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\lcms.dll; size: 185920 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\management.dll; size: 33344 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\mlib_image.dll; size: 574528 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\msvcp120.dll; size: 455328 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:38 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\msvcr100.dll; size: 773968 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\msvcr120.dll; size: 970912 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\net.dll; size: 80960 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\nio.dll; size: 51264 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\npt.dll; size: 17472 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\orbd.exe; size: 16448 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\pack200.exe; size: 15936 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\plugin2\msvcr100.dll; size: 773968 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\plugin2\npjp2.dll; size: 172096 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\policytool.exe; size: 15936 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\prism_common.dll; size: 52800 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\prism_d3d.dll; size: 116288 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\prism_sw.dll; size: 86592 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\resource.dll; size: 14912 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\rmid.exe; size: 15936 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\rmiregistry.exe; size: 15936 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\servertool.exe; size: 15936 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\splashscreen.dll; size: 177216 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\ssv.dll; size: 473152 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\ssvagent.exe; size: 52800 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\sunec.dll; size: 123968 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\sunmscapi.dll; size: 25664 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\t2k.dll; size: 195136 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\tnameserv.exe; size: 16448 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:39 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\unpack.dll; size: 65600 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\unpack200.exe; size: 159296 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\verify.dll; size: 39488 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\w2k_lsa_auth.dll; size: 21568 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\win32com.dll; size: 27648 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\WindowsAccessBridge-32.dll; size: 97856 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:34 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\wsdetect.dll; size: 163904 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:39 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\bin\zip.dll; size: 69696 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\COPYRIGHT; size: 3244 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:34 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\accessibility.properties; size: 149 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:39 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\calendars.properties; size: 1378 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\charsets.jar; size: 3036922 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:42 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\classlist; size: 84355 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:39 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\cmm\CIEXYZ.pf; size: 51236 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\cmm\GRAY.pf; size: 632 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\cmm\LINEAR_RGB.pf; size: 1044 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\cmm\PYCC.pf; size: 274474 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\cmm\sRGB.pf; size: 3144 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\comm.jar; size: 28043 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\content-types.properties; size: 5548 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\currency.data; size: 4122 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\ffjcext.zip; size: 14156 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages.properties; size: 2860 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages_de.properties; size: 3306 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages_es.properties; size: 3600 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages_fr.properties; size: 3409 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages_it.properties; size: 3223 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages_ja.properties; size: 6349 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages_ko.properties; size: 5712 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages_pt_BR.properties; size: 3285 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages_sv.properties; size: 3409 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages_zh_CN.properties; size: 4072 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages_zh_HK.properties; size: 3752 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\messages_zh_TW.properties; size: 3752 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\splash.gif; size: 8590 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\splash@2x.gif; size: 15276 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\splash_11-lic.gif; size: 7805 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:40 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy\splash_11@2x-lic.gif; size: 12250 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\deploy.jar; size: 5014514 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:42 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\access-bridge-32.jar; size: 186936 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:45 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\cldrdata.jar; size: 3837830 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:46 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\dnsns.jar; size: 8150 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\jaccess.jar; size: 43839 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:47 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\jfxrt.jar; size: 18185779 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\localedata.jar; size: 2204781 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:48 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\meta-index; size: 1511 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:40 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\nashorn.jar; size: 1981868 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:48 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\sunec.jar; size: 42154 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:40 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\sunjce_provider.jar; size: 280161 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\sunmscapi.jar; size: 32699 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\sunpkcs11.jar; size: 251327 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\ext\zipfs.jar; size: 67458 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:48 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\flavormap.properties; size: 3928 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:40 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\fontconfig.bfc; size: 3770 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\fontconfig.properties.src; size: 10568 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\fonts\LucidaBrightDemiBold.ttf; size: 75144 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\fonts\LucidaBrightDemiItalic.ttf; size: 75124 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\fonts\LucidaBrightItalic.ttf; size: 80856 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\fonts\LucidaBrightRegular.ttf; size: 344908 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\fonts\LucidaSansDemiBold.ttf; size: 317896 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\fonts\LucidaSansRegular.ttf; size: 698236 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\fonts\LucidaTypewriterBold.ttf; size: 234068 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\fonts\LucidaTypewriterRegular.ttf; size: 242700 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\hijrah-config-umalqura.properties; size: 13962 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\i386\jvm.cfg; size: 623 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\images\cursors\cursors.properties; size: 1280 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\images\cursors\invalid32x32.gif; size: 153 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\images\cursors\win32_CopyDrop32x32.gif; size: 165 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\images\cursors\win32_CopyNoDrop32x32.gif; size: 153 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\images\cursors\win32_LinkDrop32x32.gif; size: 168 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\images\cursors\win32_LinkNoDrop32x32.gif; size: 153 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\images\cursors\win32_MoveDrop32x32.gif; size: 147 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\images\cursors\win32_MoveNoDrop32x32.gif; size: 153 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:41 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\javafx.properties; size: 56 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\javaws.jar; size: 940401 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:42 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\javax.comm.properties; size: 467 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:41 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\jce.jar; size: 116446 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\jfr\default.jfc; size: 20109 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\jfr\profile.jfc; size: 20065 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\jfr.jar; size: 558771 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:42 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\jfxswt.jar; size: 33471 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\jsse.jar; size: 583111 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:43 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\jvm.hprof.txt; size: 4226 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:41 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\logging.properties; size: 2455 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\management\jmxremote.access; size: 3998 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\management\jmxremote.password.template; size: 2856 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\management\management.properties; size: 14630 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\management\snmp.acl.template; size: 3376 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\management-agent.jar; size: 370 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:43 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\meta-index; size: 2126 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:41 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\net.properties; size: 4464 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\plugin.jar; size: 1922800 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:43 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\psfont.properties.ja; size: 2796 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:41 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\psfontj2d.properties; size: 10393 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\resources.jar; size: 3492575 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:43 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\rt.jar; size: 54502207 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:45 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\security\blacklist; size: 4054 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:41 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\security\blacklisted.certs; size: 1253 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\security\cacerts; size: 113484 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\security\java.policy; size: 2466 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\security\java.security; size: 34305 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\security\javaws.policy; size: 98 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\security\local_policy.jar; size: 3527 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\security\trusted.libraries; size: 0 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\security\US_export_policy.jar; size: 3026 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\sound.properties; size: 1210 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\tzdb.dat; size: 104311 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\lib\tzmappings; size: 8400 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\LICENSE; size: 40 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:34 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\README.txt; size: 46 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\release; size: 527 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:41 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\THIRDPARTYLICENSEREADME-JAVAFX.txt; size: 110114 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:34 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, but not for update, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\THIRDPARTYLICENSEREADME.txt; size: 177094 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\jre\Welcome.html; size: 955 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\DevConfig\Calc_Color.xyz; size: 11540 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:12 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\DevConfig\ColorKParameter.xls; size: 423424 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\DevConfig\SystemConfig.xml; size: 500 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\DevConfig\xy001.ex; size: 880022 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\Language.xml; size: 46248 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\README.TXT; size: 1337 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\SpectraNexus.exe; size: 223744 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:20 CST 2019, mode: 755, overwriteMode: If newer otherwise ask, shared: false, uninstallMode: If created, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\lib\AbsoluteLayout.jar; size: 1851 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:12 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\lib\commonbean.jar; size: 20807 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\lib\dev_win_drv.jar; size: 228163 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\lib\h2-1.3.173.jar; size: 1250540 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:14 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\lib\jxl.jar; size: 415193 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:16 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\lib\sp_chart.jar; size: 1507099 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:18 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\lib\spectral_system.jar; size: 19408 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:16 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\lib\sptable.jar; size: 21419 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\lib\synthetica.jar; size: 442459 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:18 CST 2019, mode: 644, overwriteMode: Always ask except for update, shared: false, uninstallMode: If created, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\lib\syntheticaAluOxide.jar; size: 469748 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\lib\xom-1.2.7.jar; size: 253860 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\spectra_nexus_windows.jar; size: 602746 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\uninstall.exe; size: 220672 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:41:20 CST 2019, mode: 700, overwriteMode: If newer otherwise ask, shared: false, uninstallMode: If created, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\inst_jre.cfg; size: 65 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:42:14 CST 2019, mode: 644, overwriteMode: Always, shared: false, uninstallMode: If created, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\pref_jre.cfg; size: 84 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:42:14 CST 2019, mode: 644, overwriteMode: Always, shared: false, uninstallMode: If created, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\i4jruntime.jar; size: 1004061 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:42:14 CST 2019, mode: 644, overwriteMode: Always, shared: false, uninstallMode: Always, delayIfNecessary: false]
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\MessagesDefault; size: 32732 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\i4jparams.conf; size: 19312 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\stats.properties; size: 361 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\user.jar; size: 4099 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\i4jdel.exe; size: 35680 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\i4jinst.dll; size: 101888 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\i4j_extf_0_lwq964.utf8; size: 32732 bytes; exists: false
+       Install file: D:\Git\code\java_app\singlebranch6.0\Spectrual\Nexus_jg\Windows\publish\output\.install4j\i4j_extf_1_lwq964_k029na.png; size: 7249 bytes; exists: false
+       Execute action successful after 9222 ms
+[INFO] com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction [ID 9]: Execute action
+       Property linkDirectory: 
+       Property allUsers: true
+       Property unixSymlinks: true
+       Property programGroupName: SpectraNexus
+       Property uninstallerMenuName: SpectraNexus Uninstaller
+       Property unixMenuEntries: true
+       Property addDefaultLauncherLinks: true
+       Property failForSymlinksNotCreated: false
+       Property programGroupEntryConfigs: []
+       Property addUninstaller: true
+       Property categories: Application
+       Property rollbackSupported: true
+       Install file: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\SpectraNexus\SpectraNexus.lnk; size: 1682 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:42:14 CST 2019, mode: 644, overwriteMode: Always, shared: false, uninstallMode: Always, delayIfNecessary: false]
+       Install file: C:\ProgramData\Microsoft\Windows\Start Menu\Programs\SpectraNexus\SpectraNexus Uninstaller.lnk; size: 1667 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:42:15 CST 2019, mode: 644, overwriteMode: Always, shared: false, uninstallMode: Always, delayIfNecessary: false]
+       Execute action successful after 883 ms
+[INFO] com.install4j.runtime.beans.actions.desktop.RegisterAddRemoveAction [ID 10]: Execute action
+       Property icon: null
+       Property itemName: SpectraNexus 1.0.0.1
+       Property persistentProperties: {}
+       Property rollbackSupported: true
+       Execute action successful after 49 ms
+[INFO] com.install4j.runtime.beans.actions.desktop.CreateDesktopLinkAction [ID 224]: Execute action
+       Property name: SpectraNexus
+       Property file: SpectraNexus.exe
+       Property description: 
+       Property arguments: 
+       Property allUsers: true
+       Property runAsAdministrator: false
+       Property macSingleBundleTarget: true
+       Property winIconFile: null
+       Property startIn: null
+       Property rollbackSupported: true
+       Install file: C:\Users\Public\Desktop\SpectraNexus.lnk; size: 1682 bytes; exists: false
+       File options set to: [fileTime: Fri Oct 25 16:42:15 CST 2019, mode: 644, overwriteMode: Always, shared: false, uninstallMode: Always, delayIfNecessary: false]
+       Execute action successful after 123 ms
+[INFO] com.install4j.runtime.beans.screens.InstallationScreen [ID 7]: Rollback barrier reached
+       command: move 1 screens, executing actions, checking condition
+[INFO] com.install4j.runtime.beans.screens.FinishedScreen [ID 11]: Show screen
+[INFO] com.install4j.runtime.beans.screens.FinishedScreen [ID 11]: command: finish
+       cleaning up
+       Finished
