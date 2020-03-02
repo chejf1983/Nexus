@@ -5,6 +5,7 @@
  */
 package drv.sp.jni;
 
+import drv.sp.jni.sp_dev_drv.MEMTYPE;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,7 +17,7 @@ public class TestDrv {
 
     public static void main(String... args) {
         try {
-            sp_dev_drv.InitLib();
+            sp_dev_drv.InitLib(true);
             System.out.println(sp_dev_drv.GetAPIVersion());
 
             int dev_num = sp_dev_drv.OpenSpectrometers();
@@ -35,7 +36,19 @@ public class TestDrv {
                 drv.GetWavelengthCalibrationCoefficients(c_par);
                 
                 System.out.println(c_par[0]);
+                
+                byte[] testb = new byte[40];
+                //drv.WriteUserMemory(0, 0, testb);
+               // for(int i = 0; i < testb.length; i++)
+                //System.out.print(testb[i] + " ");
+                //System.out.println();
+                int ret = drv.ReadUserMemory(MEMTYPE.EIA, 0, testb);                
+                System.out.println("结果:" + ret);
+                for(int i = 0; i < testb.length; i++)
+                System.out.print(testb[i] + " ");
             }
+            
+            
         } catch (Exception ex) {
             Logger.getLogger(TestDrv.class.getName()).log(Level.SEVERE, null, ex);
         }

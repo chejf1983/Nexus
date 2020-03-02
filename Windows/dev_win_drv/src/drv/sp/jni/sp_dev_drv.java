@@ -23,17 +23,17 @@ public class sp_dev_drv {
         return IsInit;
     }
 
-    public static void InitLib() throws Exception {
+    public static void InitLib(boolean clean) throws Exception {
         if (!IsInit) {
-            System.load(CreateDLLTempFile("libusb0_x86.dll"));
-            System.load(CreateDLLTempFile("USB_Driver.dll"));
-            System.load(CreateDLLTempFile("SpectraArsenal.dll"));
-            System.load(CreateDLLTempFile("sp_dev_dll.dll"));
+            System.load(CreateDLLTempFile("libusb0_x86.dll", clean));
+            System.load(CreateDLLTempFile("USB_Driver.dll", clean));
+            System.load(CreateDLLTempFile("SpectraArsenal.dll", clean));
+            System.load(CreateDLLTempFile("sp_dev_dll.dll", clean));
             IsInit = true;
         }
     }
 
-    private static String CreateDLLTempFile(String Filename) throws Exception {
+    private static String CreateDLLTempFile(String Filename, boolean clean) throws Exception {
         //System.out.println(System.getProperty("user.dir") + "\\jre\\bin");
         File tmp = new File(System.getProperty("user.dir") + "\\jre\\bin");
         if (tmp.exists()) {
@@ -42,7 +42,12 @@ public class sp_dev_drv {
             tmp = new File(System.getProperty("user.dir") + "\\" + Filename);
         }
 
-        if (!tmp.exists()) {
+        if (clean) {
+            if (tmp.exists()) {
+                tmp.delete();
+            }
+            CreateDLLTempFile(Filename, false);
+        } else if (!tmp.exists()) {
             InputStream in = sp_dev_drv.class.getResourceAsStream("/Resource/" + Filename);
             FileOutputStream out = new FileOutputStream(tmp);
 
@@ -71,7 +76,7 @@ public class sp_dev_drv {
 
     static native int SA_OpenSpectrometers();
     // </editor-fold>
-    
+
     // <editor-fold defaultstate="collapsed" desc="搜索光谱仪串口"> 
     //返回找到几个设备。
     public static int OpenSpectrometersForSerial() {
@@ -233,7 +238,7 @@ public class sp_dev_drv {
     //非线性效准
     static native int SA_NonlinearCalibration(int spectrometerIndex, double[] pbSpectum, double[] pbNewSpectum, int SpectumNumber);
 
-    public int NonlinearCalibration(double[] pbSpectum, double[] pbNewSpectum) {        
+    public int NonlinearCalibration(double[] pbSpectum, double[] pbNewSpectum) {
         return SA_NonlinearCalibration(this.spectrometerIndex, pbSpectum, pbNewSpectum, pbNewSpectum.length);
     }
     // </editor-fold>
@@ -295,9 +300,42 @@ public class sp_dev_drv {
 
     // <editor-fold defaultstate="collapsed" desc="用户存储操作接口"> 
     /* 用户存储操作接口 */
-    static native int SA_WriteUserMemory(int spectrometerIndex, int Address, int length, byte[] UserData);
+    static native int SA_WriteUserMemory(int spectrometerIndex, int MEM, int Address, int length, byte[] UserData);
 
-    static native int SA_ReadUserMemory(int spectrometerIndex, int Address, int length, byte[] UserData);
+    public enum MEMTYPE{
+        EIA,
+	NVPA,
+	VPA,
+	MDA,
+	SRA
+    }
+    
+    private int convertmem(MEMTYPE type){
+        switch(type){
+            case EIA:
+                return 0;
+            case NVPA:
+                return 1;
+            case VPA:
+                return 2;
+            case MDA:
+                return 3;
+            case SRA:
+                return 4;
+            default:
+                return 1;            
+        }
+    }
+    
+    public int WriteUserMemory(MEMTYPE mem, int Address, byte[] UserData) {
+        return SA_WriteUserMemory(this.spectrometerIndex, convertmem(mem), Address, UserData.length, UserData);
+    }
+
+    static native int SA_ReadUserMemory(int spectrometerIndex, int MEM, int Address,  int length, byte[] UserData);
+    
+    public int ReadUserMemory(MEMTYPE mem, int Address, byte[] UserData) {
+        return SA_ReadUserMemory(this.spectrometerIndex, convertmem(mem), Address, UserData.length, UserData);
+    }
     // </editor-fold>
     // </editor-fold>
 }
