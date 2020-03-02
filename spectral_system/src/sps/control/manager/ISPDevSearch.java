@@ -12,7 +12,7 @@ package sps.control.manager;
 public interface ISPDevSearch {
 
     //public ISPDevice SearchDevice(AbstractIO io, byte hostaddr, byte dstaddr, int timeout);
-    public String InitDriver() throws Exception;
+    public String InitDriver(boolean clean) throws Exception;
 
     public ISpDevice[] SearchDevice();
 }
