@@ -326,13 +326,20 @@ JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1XenonFlashEnable
 	return SA_XenonFlashEnable(spectrometerIndex);
 }
 
+SPECTRAARSENAL_API int SA_WriteMemory(int spectrometerIndex, int MEM, int Address, int length, unsigned char * UserData);
+SPECTRAARSENAL_API int SA_ReadMemory(int spectrometerIndex, int MEM, int Address, int length, unsigned char * UserData);
 /*
  * Class:     drv_sp_jni_sp_dev_drv
  * Method:    SA_WriteUserMemory
  * Signature: (III[B)I
  */
 JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1WriteUserMemory
-  (JNIEnv * env, jclass, jint, jint, jint, jbyteArray);
+(JNIEnv * env, jclass, jint spectrometerIndex, jint MEM, jint address, jint length, jbyteArray recBuffer){
+	jbyte *tmp= (env)->GetByteArrayElements(recBuffer,0); 
+	int ret = SA_WriteMemory(spectrometerIndex, MEM, address, length, (unsigned char *)tmp);
+	(env)-> ReleaseByteArrayElements(recBuffer, tmp, 0);
+	return ret;
+}
 
 /*
  * Class:     drv_sp_jni_sp_dev_drv
@@ -340,4 +347,13 @@ JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1WriteUserMemory
  * Signature: (III[B)I
  */
 JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1ReadUserMemory
-  (JNIEnv * env, jclass, jint, jint, jint, jbyteArray);
+(JNIEnv * env, jclass, jint spectrometerIndex, jint MEM, jint address, jint length, jbyteArray recBuffer){
+	jbyte *tmp= (env)->GetByteArrayElements(recBuffer,0); 
+	int ret = SA_ReadMemory(spectrometerIndex, MEM, address, length, (unsigned char *)tmp);
+	if(ret == SA_API_SUCCESS)
+	{	
+		(env)->SetByteArrayRegion(recBuffer,0, length, tmp); 
+	}
+	(env)-> ReleaseByteArrayElements(recBuffer, tmp, 0);
+	return ret;
+}
