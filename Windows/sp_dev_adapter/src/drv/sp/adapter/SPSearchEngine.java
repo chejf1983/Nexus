@@ -36,8 +36,8 @@ public class SPSearchEngine implements ISPDevSearch {
     }
 
     @Override
-    public String InitDriver() throws Exception {
-        sp_dev_drv.InitLib();
+    public String InitDriver(boolean clean) throws Exception {
+        sp_dev_drv.InitLib(clean);
         return "光谱仪驱动版本:" + sp_dev_drv.GetAPIVersion();
     }
 }
