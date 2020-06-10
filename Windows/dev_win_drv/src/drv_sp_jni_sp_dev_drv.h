@@ -201,6 +201,14 @@ JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1SetXenonFlashPara
 
 /*
  * Class:     drv_sp_jni_sp_dev_drv
+ * Method:    SA_GetXenonFlashPara
+ * Signature: (I[I)I
+ */
+JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1GetXenonFlashPara
+  (JNIEnv *, jclass, jint, jintArray);
+
+/*
+ * Class:     drv_sp_jni_sp_dev_drv
  * Method:    SA_XenonFlashDisable
  * Signature: (I)I
  */
@@ -218,18 +226,18 @@ JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1XenonFlashEnable
 /*
  * Class:     drv_sp_jni_sp_dev_drv
  * Method:    SA_WriteUserMemory
- * Signature: (III[B)I
+ * Signature: (IIII[B)I
  */
 JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1WriteUserMemory
-  (JNIEnv *, jclass, jint, jint, jint, jbyteArray);
+  (JNIEnv *, jclass, jint, jint, jint, jint, jbyteArray);
 
 /*
  * Class:     drv_sp_jni_sp_dev_drv
  * Method:    SA_ReadUserMemory
- * Signature: (III[B)I
+ * Signature: (IIII[B)I
  */
 JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1ReadUserMemory
-  (JNIEnv *, jclass, jint, jint, jint, jbyteArray);
+  (JNIEnv *, jclass, jint, jint, jint, jint, jbyteArray);
 
 #ifdef __cplusplus
 }

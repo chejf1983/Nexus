@@ -280,6 +280,14 @@ public class sp_dev_drv {
         return SA_SetXenonFlashPara(this.spectrometerIndex, iPulseWidth, IntervalTime, iDelayTime, PulseNumber);
     }
     // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="脉冲氙灯参数读取"> 
+    static native int SA_GetXenonFlashPara(int spectrometerIndex, int[] rets);
+
+    public int GetXenonFlashPara(int[] rets) {
+        return SA_GetXenonFlashPara(this.spectrometerIndex, rets);
+    }
+    // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="关闭氙灯"> 
     static native int SA_XenonFlashDisable(int spectrometerIndex);
