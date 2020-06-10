@@ -170,7 +170,7 @@ JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1SetWavelengthCalibration
 }
 
 /*
- * Class:     drv_sp_jni_sp_dev_drv
+ * Class:     drv_sp_jni_sp_dev_drv Wait!!
  * Method:    SA_GetNonlinearCalibrationPixel
  * Signature: (I[FI[F[F)I
  */
@@ -178,7 +178,7 @@ JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1GetNonlinearCalibrationP
   (JNIEnv * env, jclass, jint, jfloatArray, jint, jfloatArray, jfloatArray);
 
 /*
- * Class:     drv_sp_jni_sp_dev_drv
+ * Class:     drv_sp_jni_sp_dev_drv Wait!!
  * Method:    SA_SetNonlinearCalibrationPixel
  * Signature: (IFI[F[F)I
  */
@@ -304,6 +304,20 @@ JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1SetSpectumTriggerMode
 JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1SetXenonFlashPara
   (JNIEnv * env, jclass, jint spectrometerIndex, jint iPulseWidth, jint IntervalTime, jint iDelayTime, jint PulseNumber){
 	return SA_SetXenonFlashPara(spectrometerIndex, iPulseWidth, IntervalTime, iDelayTime, PulseNumber);
+}
+
+/*
+ * Class:     drv_sp_jni_sp_dev_drv
+ * Method:    SA_SetXenonFlashPara
+ * Signature: (IIIII)I ÉèÖÃÂö³åë¯µÆ²ÎÊý
+ */
+JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1GetXenonFlashPara
+  (JNIEnv * env, jclass, jint spectrometerIndex, jintArray output_Buffer){
+	long tmp[4] = {0};
+	int ret = SA_GetXenonFlashPara(spectrometerIndex, (int *)&tmp[0],  (int *)&tmp[1],  (int *)&tmp[2],  (int *)&tmp[3]);
+
+	(env)->SetIntArrayRegion(output_Buffer,0, 4, tmp); 
+	return ret;
 }
 
 /*

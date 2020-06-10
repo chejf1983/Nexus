@@ -201,6 +201,14 @@ JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1SetXenonFlashPara
 
 /*
  * Class:     drv_sp_jni_sp_dev_drv
+ * Method:    SA_SetXenonFlashPara
+ * Signature: (IIIII)I
+ */
+JNIEXPORT jint JNICALL Java_drv_sp_jni_sp_1dev_1drv_SA_1GetXenonFlashPara
+  (JNIEnv *, jclass, jint, jintArray);
+
+/*
+ * Class:     drv_sp_jni_sp_dev_drv
  * Method:    SA_XenonFlashDisable
  * Signature: (I)I
  */
