@@ -172,16 +172,16 @@ public class SPDeviceAdp implements ISpDevice {
     //波长系数
     private double[] wave_array;
 
-    private void initWaveLen() throws Exception{
+    private void initWaveLen() throws Exception {
         this.wave_array = new double[this.sp_par.nodeNumber];
         if (this.dev_drv.GetWavelength(wave_array) < 0) {
             throw new Exception("获取波长数据失败!");
         }
-        for(int i = 0; i < this.wave_array.length; i++){
+        for (int i = 0; i < this.wave_array.length; i++) {
             this.wave_array[i] = new BigDecimal(this.wave_array[i]).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
         }
     }
-    
+
     @Override
     public void InitDevice() throws Exception {
         dev_info = new SSPDevInfo();
@@ -274,16 +274,17 @@ public class SPDeviceAdp implements ISpDevice {
     private SSConfigItem[] config = new SSConfigItem[0];
     public static String[] CONFIG_STRING = new String[]{"脉冲宽度", "积分时间", "延时", "脉冲次数"};
     public static String[] CONFIG_UNIT = new String[]{"", "ms", "ms", ""};
-    private int pluswidth = 0;
-    private int IntervalTime = 0;
-    private int DelayTime = 0;
-    private int PulseNumber = 0;
+    private int x_pars[] = new int[4];
+//    private int pluswidth = 0;
+//    private int IntervalTime = 0;
+//    private int DelayTime = 0;
+//    private int PulseNumber = 0;
 
     private void initConfig() {
-        config = new SSConfigItem[4];
-        Object[] CONFIG_VALUE = new Object[]{pluswidth, IntervalTime, DelayTime, PulseNumber};
+        this.dev_drv.GetXenonFlashPara(x_pars);
+        config = new SSConfigItem[x_pars.length];
         for (int i = 0; i < config.length; i++) {
-            config[i] = SSConfigItem.CreateRWItem(CONFIG_STRING[i], CONFIG_VALUE[i].toString(), CONFIG_UNIT[i]);
+            config[i] = SSConfigItem.CreateRWItem(CONFIG_STRING[i], x_pars[i] + "", CONFIG_UNIT[i]);
         }
     }
 
@@ -297,20 +298,20 @@ public class SPDeviceAdp implements ISpDevice {
 
         for (SSConfigItem item : config) {
             if (item.data_name.contentEquals(CONFIG_STRING[0])) {
-                pluswidth = Integer.valueOf(item.value);
+                x_pars[0] = Integer.valueOf(item.value);
             }
             if (item.data_name.contentEquals(CONFIG_STRING[1])) {
-                IntervalTime = Integer.valueOf(item.value);
+                 x_pars[1] = Integer.valueOf(item.value);
             }
             if (item.data_name.contentEquals(CONFIG_STRING[2])) {
-                DelayTime = Integer.valueOf(item.value);
+                 x_pars[2] = Integer.valueOf(item.value);
             }
             if (item.data_name.contentEquals(CONFIG_STRING[3])) {
-                PulseNumber = Integer.valueOf(item.value);
+                 x_pars[3] = Integer.valueOf(item.value);
             }
         }
 
-        this.dev_drv.SetXenonFlashPara(pluswidth, IntervalTime, DelayTime, PulseNumber);
+        this.dev_drv.SetXenonFlashPara( x_pars[0],  x_pars[1],  x_pars[2],  x_pars[3]);
     }
     // </editor-fold> 
 }

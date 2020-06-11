@@ -185,25 +185,36 @@ public class AbsApp extends CTestApp {
         }
 
         for (int i = 0; i < tmp.length; i++) {
-            if (data.data.datavalue[i] == 0 || (this.base_data.data.datavalue[i] / data.data.datavalue[i]) > 10000) {
-                tmp[i] = 4;
-            } else {
-                if (this.base_data.data.datavalue[i] == 0) {
-                    tmp[i] = 0;
-                } else {
-                    try {
-                        tmp[i] = Math.log10(this.base_data.data.datavalue[i] / data.data.datavalue[i]);
-                    } catch (Exception ex) {
-                        tmp[i] = 0;
-                    }
-//                    tmp[i] = tmp[i] > 100 ? 100 : tmp[i];
+            if (this.base_data.data.datavalue[i] <= 0 || this.base_data.data.datavalue[i] < data.data.datavalue[i]) {
+                tmp[i] = 0;
+            } else if (data.data.datavalue[i] <= 0) {
+                try {
+                    tmp[i] = Math.log10(this.base_data.data.datavalue[i] / 0.001d);
+                } catch (Exception ex) {
+                    tmp[i] = -1;
                 }
+            } else {
+                try {
+                    tmp[i] = Math.log10(this.base_data.data.datavalue[i] / data.data.datavalue[i]);
+                } catch (Exception ex) {
+                    tmp[i] = -1;
+                }
+//                    tmp[i] = tmp[i] > 100 ? 100 : tmp[i];                
             }
             tmp[i] = new BigDecimal(tmp[i]).setScale(6, BigDecimal.ROUND_HALF_UP).doubleValue();
         }
 
         this.currentdata = new RateData(this.base_data, data, tmp);
         this.TESTEVENT_CENTER.CreateEvent(TESTDATA, this.currentdata);
+    }
+
+    public static void main(String... args) {
+        double tmp = Math.log10(1000 / 1000);
+        System.out.println(tmp);
+        tmp = Math.log10(0 / 1000);
+        System.out.println(tmp);
+        tmp = Math.log10(10000 / -1);
+        System.out.println(tmp);
     }
     // </editor-fold>
     // </editor-fold> 
