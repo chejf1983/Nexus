@@ -2,12 +2,13 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment/>
-<entry key="LinearEnable">true</entry>
-<entry key="MainDev">NAH0503001190282</entry>
-<entry key="IsLinearEnable">true</entry>
 <entry key="IsDkEnable">true</entry>
-<entry key="FilterEnable">true</entry>
 <entry key="BGroundColor">#666666</entry>
-<entry key="Filterkey">1</entry>
+<entry key="FilterEnable">true</entry>
+<entry key="IsLinearEnable">true</entry>
+<entry key="MainDev">NAH0503001190282</entry>
 <entry key="SlaveDev">NAH0503001180327</entry>
+<entry key="LinearEnable">true</entry>
+<entry key="INTDLL">N</entry>
+<entry key="Filterkey">1</entry>
 </properties>

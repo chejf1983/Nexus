@@ -59,24 +59,21 @@ public class StartFlash extends javax.swing.JFrame {
         }
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    SpectralPlatService.GetInstance().InitPlatForm();
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                SpectralPlatService.GetInstance().InitPlatForm();
 //                    SPDevSearch.InitDriver();
-                    SpectralPlatService.SetDriver(new SPSearchEngine());
+                SpectralPlatService.SetDriver(new SPSearchEngine());
 
-                    MainForm mainForm = new MainForm();
+                MainForm mainForm = new MainForm();
 //                    TimeUnit.MILLISECONDS.sleep(500);
-                    StartFlash.this.setVisible(false);
-                    StartFlash.this.dispose();
-                    mainForm.setVisible(true);
-                } catch (Exception ex) {
-                    Logger.getLogger(StartFlash.class.getName()).log(Level.SEVERE, null, ex);
-                    StartFlash.this.setVisible(false);
-                    StartFlash.this.dispose();
-                }
+                StartFlash.this.setVisible(false);
+                StartFlash.this.dispose();
+                mainForm.setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(StartFlash.class.getName()).log(Level.SEVERE, null, ex);
+                StartFlash.this.setVisible(false);
+                StartFlash.this.dispose();
             }
         });
     }

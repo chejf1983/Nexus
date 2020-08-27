@@ -21,8 +21,27 @@ public class SPSearchEngine implements ISPDevSearch {
         if (sp_dev_drv.IsInitLib()) {
             //搜索设备
             int dev_num = sp_dev_drv.OpenSpectrometers();
-            if(dev_num == 0){
-                sp_dev_drv.OpenSpectrometersForSerial();
+//            if (dev_num == 0) {
+//                dev_num = sp_dev_drv.OpenSpectrometersForSerial();
+//            }
+            ISpDevice[] ret = new ISpDevice[dev_num];
+            //创建适配器
+            for (int i = 0; i < ret.length; i++) {
+                ret[i] = new SPDeviceAdp(new sp_dev_drv(i));
+            }
+            return ret;
+        }
+        System.out.println("驱动没有初始化");
+        return new ISpDevice[0];
+    }
+
+    @Override
+    public ISpDevice[] SearchDeviceWithCom() {//判断是否初始化
+        if (sp_dev_drv.IsInitLib()) {
+            //搜索设备
+            int dev_num = sp_dev_drv.OpenSpectrometers();
+            if (dev_num == 0) {
+                dev_num = sp_dev_drv.OpenSpectrometersForSerial();
             }
             ISpDevice[] ret = new ISpDevice[dev_num];
             //创建适配器
@@ -40,4 +59,11 @@ public class SPSearchEngine implements ISPDevSearch {
         sp_dev_drv.InitLib(clean);
         return "光谱仪驱动版本:" + sp_dev_drv.GetAPIVersion();
     }
+
+    public static void main(String... args) throws Exception {
+        SPSearchEngine tmp = new SPSearchEngine();
+        System.out.println(tmp.InitDriver(true));
+        System.out.println(tmp.SearchDevice().length);
+    }
+
 }

@@ -178,7 +178,11 @@ public class SPDeviceAdp implements ISpDevice {
             throw new Exception("获取波长数据失败!");
         }
         for (int i = 0; i < this.wave_array.length; i++) {
-            this.wave_array[i] = new BigDecimal(this.wave_array[i]).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+            if (Double.isFinite(this.wave_array[i])) {
+                this.wave_array[i] = new BigDecimal(this.wave_array[i]).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+            }else{
+                this.wave_array[i] = i + 1;
+            }
         }
     }
 
@@ -301,17 +305,17 @@ public class SPDeviceAdp implements ISpDevice {
                 x_pars[0] = Integer.valueOf(item.value);
             }
             if (item.data_name.contentEquals(CONFIG_STRING[1])) {
-                 x_pars[1] = Integer.valueOf(item.value);
+                x_pars[1] = Integer.valueOf(item.value);
             }
             if (item.data_name.contentEquals(CONFIG_STRING[2])) {
-                 x_pars[2] = Integer.valueOf(item.value);
+                x_pars[2] = Integer.valueOf(item.value);
             }
             if (item.data_name.contentEquals(CONFIG_STRING[3])) {
-                 x_pars[3] = Integer.valueOf(item.value);
+                x_pars[3] = Integer.valueOf(item.value);
             }
         }
 
-        this.dev_drv.SetXenonFlashPara( x_pars[0],  x_pars[1],  x_pars[2],  x_pars[3]);
+        this.dev_drv.SetXenonFlashPara(x_pars[0], x_pars[1], x_pars[2], x_pars[3]);
     }
     // </editor-fold> 
 }

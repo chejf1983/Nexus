@@ -15,4 +15,6 @@ public interface ISPDevSearch {
     public String InitDriver(boolean clean) throws Exception;
 
     public ISpDevice[] SearchDevice();
+    
+    public ISpDevice[] SearchDeviceWithCom();
 }
