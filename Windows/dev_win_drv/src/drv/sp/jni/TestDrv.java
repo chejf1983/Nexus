@@ -5,7 +5,6 @@
  */
 package drv.sp.jni;
 
-import drv.sp.jni.sp_dev_drv.MEMTYPE;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
