@@ -74,7 +74,7 @@ public class SPDeviceAdp implements ISpDevice {
         //读取波长数据
         double[] data = new double[this.sp_par.nodeNumber];
         double[] wave = new double[wave_array.length];
-        if (this.dev_drv.GetSpectum(data) < 0) {
+        if (this.dev_drv.GetSpectum(data) <= 0) {
             throw new Exception("数据采集失败!");
         }
 
@@ -179,8 +179,8 @@ public class SPDeviceAdp implements ISpDevice {
         }
         for (int i = 0; i < this.wave_array.length; i++) {
             if (Double.isFinite(this.wave_array[i])) {
-                this.wave_array[i] = new BigDecimal(this.wave_array[i]).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
-            }else{
+                this.wave_array[i] = new BigDecimal(this.wave_array[i]).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+            } else {
                 this.wave_array[i] = i + 1;
             }
         }
@@ -249,19 +249,37 @@ public class SPDeviceAdp implements ISpDevice {
 
     @Override
     public void SetWaveParameter(SSWaveCaculatePar par) throws Exception {
-        this.dev_drv.SetWavelengthCalibrationCoefficients(new double[]{par.C0, par.C1, par.C2, par.C3});
+        int ret = this.dev_drv.SetWavelengthCalibrationCoefficients(new double[]{par.C0, par.C1, par.C2, par.C3});
+        if (ret < 0) {
+            throw new Exception("设置波长系数失败");
+        }
         this.initWaveLen();
     }
     // </editor-fold> 
 
     @Override
     public SSLinearParameter GetLinearPar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        float[] pfNonlinearCalibAD = new float[1000];
+        float[] pfNonlinearCalibCo = new float[1000];
+        int num = this.dev_drv.GetNonlinearCalibrationPixel(pfNonlinearCalibAD, pfNonlinearCalibCo);
+        if (num < 0) {
+            return new SSLinearParameter(0);
+        } else {
+            SSLinearParameter ret = new SSLinearParameter(num);
+            for (int i = 0; i < ret.NodeKNumber; i++) {
+                ret.ADValueArray[i] = pfNonlinearCalibAD[i];
+                ret.KParArray[i] = pfNonlinearCalibCo[i];
+            }
+            return ret;
+        }
     }
 
     @Override
     public void SetLinearPar(SSLinearParameter par) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int ret = this.dev_drv.SetNonlinearCalibrationPixel(149, par.NodeKNumber, par.ADValueArray, par.KParArray);
+        if (ret < 0) {
+            throw new Exception("设置波长系数失败");
+        }
     }
     // </editor-fold> 
 
