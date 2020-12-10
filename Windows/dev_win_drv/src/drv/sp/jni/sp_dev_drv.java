@@ -306,44 +306,44 @@ public class sp_dev_drv {
     // </editor-fold>
     // </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc="用户存储操作接口"> 
-    /* 用户存储操作接口 */
-    static native int SA_WriteUserMemory(int spectrometerIndex, int MEM, int Address, int length, byte[] UserData);
-
-    public enum MEMTYPE{
-        EIA,
-	NVPA,
-	VPA,
-	MDA,
-	SRA
-    }
-    
-    private int convertmem(MEMTYPE type){
-        switch(type){
-            case EIA:
-                return 0;
-            case NVPA:
-                return 1;
-            case VPA:
-                return 2;
-            case MDA:
-                return 3;
-            case SRA:
-                return 4;
-            default:
-                return 1;            
-        }
-    }
-    
-    public int WriteUserMemory(MEMTYPE mem, int Address, byte[] UserData) {
-        return SA_WriteUserMemory(this.spectrometerIndex, convertmem(mem), Address, UserData.length, UserData);
-    }
-
-    static native int SA_ReadUserMemory(int spectrometerIndex, int MEM, int Address,  int length, byte[] UserData);
-    
-    public int ReadUserMemory(MEMTYPE mem, int Address, byte[] UserData) {
-        return SA_ReadUserMemory(this.spectrometerIndex, convertmem(mem), Address, UserData.length, UserData);
-    }
-    // </editor-fold>
+//    // <editor-fold defaultstate="collapsed" desc="用户存储操作接口"> 
+//    /* 用户存储操作接口 */
+//    static native int SA_WriteUserMemory(int spectrometerIndex, int MEM, int Address, int length, byte[] UserData);
+//
+//    public enum MEMTYPE{
+//        EIA,
+//	NVPA,
+//	VPA,
+//	MDA,
+//	SRA
+//    }
+//    
+//    private int convertmem(MEMTYPE type){
+//        switch(type){
+//            case EIA:
+//                return 0;
+//            case NVPA:
+//                return 1;
+//            case VPA:
+//                return 2;
+//            case MDA:
+//                return 3;
+//            case SRA:
+//                return 4;
+//            default:
+//                return 1;            
+//        }
+//    }
+//    
+//    public int WriteUserMemory(MEMTYPE mem, int Address, byte[] UserData) {
+//        return SA_WriteUserMemory(this.spectrometerIndex, convertmem(mem), Address, UserData.length, UserData);
+//    }
+//
+//    static native int SA_ReadUserMemory(int spectrometerIndex, int MEM, int Address,  int length, byte[] UserData);
+//    
+//    public int ReadUserMemory(MEMTYPE mem, int Address, byte[] UserData) {
+//        return SA_ReadUserMemory(this.spectrometerIndex, convertmem(mem), Address, UserData.length, UserData);
+//    }
+//    // </editor-fold>
     // </editor-fold>
 }
