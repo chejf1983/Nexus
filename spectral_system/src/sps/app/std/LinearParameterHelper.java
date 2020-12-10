@@ -26,31 +26,20 @@ public class LinearParameterHelper {
         }
 
         BufferedReader reader = new BufferedReader(new FileReader(file));
-        int Type = (int) FindNumber("Type", reader);
-        int ModeNumer = (int) FindNumber("ModeNum", reader);
-        SSLinearParameter par = new SSLinearParameter(ModeNumer);
-        par.SynType = Type;
+        int kNumber = (int) FindNumber("KNum", reader);
+        SSLinearParameter par = new SSLinearParameter(kNumber);
 
-        for (int nodeIndex = 0; nodeIndex < par.NodeNumber; nodeIndex++) {
-            float wave = FindNumber("WL", reader);
-            int kNumber = (int) FindNumber("KNum", reader);
+        for (int adIndex = 0; adIndex < kNumber; adIndex++) {
+            String result;
+            if ((result = reader.readLine()) != null) {
+                String[] wavenode = result.split("#");
 
-            float[] tmp_adValue_array = new float[kNumber];
-            float[] tmp_kpar_array = new float[kNumber];
-
-            for (int adIndex = 0; adIndex < kNumber; adIndex++) {
-                String result;
-                if ((result = reader.readLine()) != null) {
-                    String[] wavenode = result.split("#");
-
-                    tmp_adValue_array[adIndex] = Float.parseFloat(wavenode[0]);
-                    tmp_kpar_array[adIndex] = Float.parseFloat(wavenode[1]);
-                } else {
-                    reader.close();
-                    throw new Exception(" Cant read ADValue and K parameter");
-                }
+                par.ADValueArray[adIndex] = Float.parseFloat(wavenode[0]);
+                par.KParArray[adIndex] = Float.parseFloat(wavenode[1]);
+            } else {
+                reader.close();
+                throw new Exception(" Cant read ADValue and K parameter");
             }
-            par.NodeArray[nodeIndex] = par.new LinearParNode(wave, kNumber, tmp_adValue_array, tmp_kpar_array);
         }
 
         reader.close();
@@ -73,63 +62,15 @@ public class LinearParameterHelper {
         }
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(dstfile));
-        writer.write("Type:" + par.SynType);
-        writer.newLine();
-        writer.write("ModeNum:" + par.NodeNumber);
+        writer.write("KNum:" + par.NodeKNumber);
         writer.newLine();
 
-        for (int nodeIndex = 0; nodeIndex < par.NodeNumber; nodeIndex++) {
-            writer.write("WL:" + par.NodeArray[nodeIndex].NodeWave);
+        for (int adIndex = 0; adIndex < par.NodeKNumber; adIndex++) {
+            writer.write(par.ADValueArray[adIndex] + "#" + par.KParArray[adIndex]);
             writer.newLine();
-            writer.write("KNum:" + par.NodeArray[nodeIndex].NodeKNumber);
-            writer.newLine();
-
-            for (int adIndex = 0; adIndex < par.NodeArray[nodeIndex].NodeKNumber; adIndex++) {
-                writer.write(par.NodeArray[nodeIndex].ADValueArray[adIndex] + "#" + par.NodeArray[nodeIndex].KParArray[adIndex]);
-                writer.newLine();
-            }
         }
 
         writer.flush();
         writer.close();
-    }
-
-    public static SSLinearParameter BuildLinearParameter(int partype, LinearNodePar[] nodelist) {
-        SSLinearParameter lpar = new SSLinearParameter(nodelist.length);
-        lpar.SynType = partype;
-
-        for (int i = 0; i < nodelist.length; i++) {
-            LinearNodePar node = nodelist[i];
-
-            //计算单个node
-            float[] karray = new float[node.ADvalue.length];
-            int index = 0;
-            float maxad = node.ADvalue[index];
-            
-            for (int j = 0; j < karray.length; j++) {
-                //计算AD与积分时间的比例
-                if (node.itime[j] == 0) {
-                    karray[j] = 0;
-                } else {
-                    karray[j] = node.ADvalue[j] / node.itime[j];
-                }
-                
-                //寻找最大AD值
-                if(node.ADvalue[j] > maxad){
-                    index = j;
-                    maxad = node.ADvalue[j];
-                }
-            }
-            
-            //以最大AD为标准，计算系数
-            float maxk = karray[index];
-            for (int j = 0; j < karray.length; j++) {
-                karray[j] = maxk / karray[j];
-            }
-
-            lpar.NodeArray[i] = lpar.new LinearParNode(node.NodeID, node.ADvalue.length, node.ADvalue, karray);
-        }
-
-        return lpar;
     }
 }
