@@ -25,7 +25,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jScrollPane2" alignment="0" pref="0" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="220" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="107" max="32767" attributes="0"/>
+              <Component id="Button_Import" min="-2" pref="107" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="Button_Export" min="-2" pref="107" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -35,7 +37,10 @@
           <Group type="102" alignment="1" attributes="0">
               <Component id="jScrollPane2" pref="202" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="Button_Export" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Button_Export" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Button_Import" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,5 +75,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="Button_Import">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="export"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Button_ImportActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

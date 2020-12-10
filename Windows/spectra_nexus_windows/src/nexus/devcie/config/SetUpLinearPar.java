@@ -29,7 +29,7 @@ public class SetUpLinearPar extends javax.swing.JPanel {
      */
     public SetUpLinearPar() {
         initComponents();
-//        this.Button_Import.setText("导入非线性数据");
+        this.Button_Import.setText("导入数据");
         this.Button_Export.setText("导出数据");
     }
 
@@ -68,7 +68,6 @@ public class SetUpLinearPar extends javax.swing.JPanel {
         });
     }
 
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,6 +81,7 @@ public class SetUpLinearPar extends javax.swing.JPanel {
         Button_Export = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         lineartable = new javax.swing.JTable();
+        Button_Import = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -105,13 +105,22 @@ public class SetUpLinearPar extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(lineartable);
 
+        Button_Import.setText("export");
+        Button_Import.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_ImportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 220, Short.MAX_VALUE)
+                .addGap(0, 107, Short.MAX_VALUE)
+                .addComponent(Button_Import, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Button_Export, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -119,7 +128,9 @@ public class SetUpLinearPar extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Button_Export))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Button_Export)
+                    .addComponent(Button_Import)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -136,8 +147,25 @@ public class SetUpLinearPar extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_Button_ExportActionPerformed
 
+    private void Button_ImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ImportActionPerformed
+        File file = FileDialogHelp.GetFilePath(LinearParameterHelper.fileEndMark);
+        if (file == null) {
+            return;
+        }
+        try (ISpDevice tdev = this.dev) {
+            tdev.Open();
+            SSLinearParameter ReadLinearParameter = LinearParameterHelper.ReadLinearParameter(file);
+            tdev.SetLinearPar(ReadLinearParameter);
+            showPar(ReadLinearParameter);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+            Logger.getLogger(SetUpLinearPar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Button_ImportActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Export;
+    private javax.swing.JButton Button_Import;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable lineartable;
