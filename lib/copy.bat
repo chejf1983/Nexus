@@ -6,6 +6,8 @@ del .\*.jar
 @echo off
 echo copy h2数据库开发包
 copy ..\..\..\lib\h2\bin\h2-1.3.173.jar .\  
+echo copy JNA
+copy ..\..\..\lib\jna*.jar .\  
 echo copy excl开发包
 copy ..\..\..\lib\jexcelapi\jxl.jar .\
 echo copy jyloo皮肤开发包
