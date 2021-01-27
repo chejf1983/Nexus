@@ -6,8 +6,8 @@ import java.io.FileOutputStream;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
-import nahon.comm.event.Event;
-import nahon.comm.event.EventListener;
+import nahon.comm.event.NEvent;
+import nahon.comm.event.NEventListener;
 import nahon.comm.faultsystem.LogCenter;
 import chart.data.CSPData;
 import chart.spchart.panel.SpectralChartPane;
@@ -112,22 +112,16 @@ public class UIStanderApp extends javax.swing.JPanel {
     private void InitAppControl() {
         commapp = SpectralPlatService.GetInstance().GetAppManager().GetCommonApp();
 
-        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener(new EventListener<Boolean>() {
-            @Override
-            public void recevieEvent(Event<Boolean> event) {
-                //更新控制面板使能状态
-                ToggleButton_RMS.setEnabled(!event.GetEvent());
-                Button_WatchNode.setEnabled(!event.GetEvent());
-            }
+        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
+            //更新控制面板使能状态
+            ToggleButton_RMS.setEnabled(!event.GetEvent());
+            Button_WatchNode.setEnabled(!event.GetEvent());
         });
 
-        this.commapp.TESTEVENT_CENTER.RegeditListener(new EventListener<Integer>() {
-            @Override
-            public void recevieEvent(Event<Integer> event) {
-                if (event.GetEvent() == StanderApp.DKTEST
-                        || event.GetEvent() == StanderApp.TESTDATA) {
-                    DisplayData((SSpectralDataPacket) event.Info());
-                }
+        this.commapp.TESTEVENT_CENTER.RegeditListener((NEvent<Integer> event) -> {
+            if (event.GetEvent() == StanderApp.DKTEST
+                    || event.GetEvent() == StanderApp.TESTDATA) {
+                DisplayData((SSpectralDataPacket) event.Info());
             }
         });
     }

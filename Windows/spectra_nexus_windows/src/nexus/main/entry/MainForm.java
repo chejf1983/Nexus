@@ -10,10 +10,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import nahon.comm.event.Event;
-import nahon.comm.event.EventListener;
+import nahon.comm.event.NEvent;
 import nahon.comm.faultsystem.LogCenter;
 import nexus.app.absorbe.UIAbsorbeApp;
 
@@ -40,11 +40,8 @@ public class MainForm extends javax.swing.JFrame {
      */
     public MainForm() {
         initComponents();
-        LogCenter.Instance().RegisterFaultEvent(new EventListener() {
-            @Override
-            public void recevieEvent(Event event) {
-                JOptionPane.showMessageDialog(MainForm.this, event.Info().toString());
-            }
+        LogCenter.Instance().RegisterFaultEvent((NEvent<Level> event) -> {
+            JOptionPane.showMessageDialog(MainForm.this, event.Info().toString());
         });
         //初始化界面
         this.InitUI();
@@ -103,12 +100,9 @@ public class MainForm extends javax.swing.JFrame {
     private CardLayout applicationAreaLayout = new CardLayout();
 
     private void InitApplication() {
-        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener(new EventListener<Boolean>() {
-            @Override
-            public void recevieEvent(Event<Boolean> event) {
-                //更新控制面板使能状态
-                Menu_Application.setEnabled(!event.GetEvent());
-            }
+        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
+            //更新控制面板使能状态
+            Menu_Application.setEnabled(!event.GetEvent());
         });
 
         this.ApplicationGroup.add(this.MenuItem_Source);
@@ -175,22 +169,16 @@ public class MainForm extends javax.swing.JFrame {
         }, 0, 1000);
 
         //显示时间
-        SpectralPlatService.GetInstance().GetAppManager().TimeFlag.TimeConsumeEvent.RegeditListener(new EventListener<Long>() {
-            @Override
-            public void recevieEvent(Event<Long> event) {
-                java.awt.EventQueue.invokeLater(() -> {
-                    Label_time.setText("耗时" + ":" + (double) event.GetEvent() / 1000000 + "ms");
-                });
-            }
+        SpectralPlatService.GetInstance().GetAppManager().TimeFlag.TimeConsumeEvent.RegeditListener((NEvent<Long> event) -> {
+            java.awt.EventQueue.invokeLater(() -> {
+                Label_time.setText("耗时" + ":" + (double) event.GetEvent() / 1000000 + "ms");
+            });
         });
 
-        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener(new EventListener<Boolean>() {
-            @Override
-            public void recevieEvent(Event<Boolean> event) {
-                java.awt.EventQueue.invokeLater(() -> {
-                    ProgressBar.setIndeterminate(event.GetEvent());
-                });
-            }
+        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
+            java.awt.EventQueue.invokeLater(() -> {
+                ProgressBar.setIndeterminate(event.GetEvent());
+            });
         });
     }
     // </editor-fold> 

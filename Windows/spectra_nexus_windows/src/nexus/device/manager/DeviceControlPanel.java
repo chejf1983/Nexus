@@ -5,8 +5,8 @@
 package nexus.device.manager;
 
 import java.util.logging.Level;
-import nahon.comm.event.Event;
-import nahon.comm.event.EventListener;
+import nahon.comm.event.NEvent;
+import nahon.comm.event.NEventListener;
 import nahon.comm.faultsystem.LogCenter;
 import nexus.devcie.config.ConfigDialog;
 import nexus.main.entry.MainForm;
@@ -55,12 +55,9 @@ public class DeviceControlPanel extends javax.swing.JPanel {
 
     // <editor-fold defaultstate="collapsed" desc="界面参数初始化">
     private void InitDeviceInfo() {
-        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener(new EventListener<Boolean>() {
-            @Override
-            public void recevieEvent(Event<Boolean> event) {
-                //更新控制面板使能状态
-                UpdateControlPaneState(event.GetEvent());
-            }
+        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
+            //更新控制面板使能状态
+            UpdateControlPaneState(event.GetEvent());
         });
 
         UpdateControlPaneState(SpectralPlatService.GetInstance().GetAppManager().IsRunning());
@@ -68,21 +65,18 @@ public class DeviceControlPanel extends javax.swing.JPanel {
         GlobalConfig TestConfig = SpectralPlatService.GetInstance().GetAppManager().TestConfig;
 
         //跟新按电流使能状态
-        SpectralPlatService.GetInstance().GetAppManager().TestConfig.ConfigUpdateEvent.RegeditListener(new EventListener() {
-            @Override
-            public void recevieEvent(Event event) {
-                //更新平均次数数据
-                Average_Input.setText(String.valueOf(TestConfig.collect_par.averageTime));
-                //更新积分时间状态
-                IntegeralTime_Input.setText(String.valueOf(TestConfig.collect_par.integralTime));
-                //初始化采样间隔
-                IntegervalTime_Input.setText(String.valueOf((float) TestConfig.collect_par.interval_time / 1000));
-                //更新灯开关
-                ToggleButton_LightEnable.setSelected(TestConfig.collect_config.light_switch);
-                //更新按电流选择开关
-                ToggleButton_DarkEnable.setSelected(TestConfig.collect_config.dk_enable);
-                //更新非线性开关
-            }
+        SpectralPlatService.GetInstance().GetAppManager().TestConfig.ConfigUpdateEvent.RegeditListener((NEvent event) -> {
+            //更新平均次数数据
+            Average_Input.setText(String.valueOf(TestConfig.collect_par.averageTime));
+            //更新积分时间状态
+            IntegeralTime_Input.setText(String.valueOf(TestConfig.collect_par.integralTime));
+            //初始化采样间隔
+            IntegervalTime_Input.setText(String.valueOf((float) TestConfig.collect_par.interval_time / 1000));
+            //更新灯开关
+            ToggleButton_LightEnable.setSelected(TestConfig.collect_config.light_switch);
+            //更新按电流选择开关
+            ToggleButton_DarkEnable.setSelected(TestConfig.collect_config.dk_enable);
+            //更新非线性开关
         });
         ToggleButton_DarkEnable.setSelected(TestConfig.collect_config.dk_enable);
 
