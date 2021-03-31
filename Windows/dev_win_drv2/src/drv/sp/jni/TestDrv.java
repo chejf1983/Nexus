@@ -31,13 +31,14 @@ public class TestDrv {
                 sp_dev_drv drv = new sp_dev_drv(0);
                 System.out.println(drv.GetHardwareVersion());
 
-                double[] pdSpectumData = new double[2000];
+                double[] pdSpectumData = new double[3000];
                 System.out.println(drv.GetSpectum(pdSpectumData));
                 float[] ad = new float[100];
                 float[] cal = new float[100];
                 int num = drv.GetNonlinearCalibrationPixel(ad, cal);
                 System.out.println("non_par_num:" + num);
                 System.out.println(ad[0]);
+                drv.GetWavelength(pdSpectumData);
 //                int[] a = new int[4];
 //                drv.GetXenonFlashPara(a);
 //                System.out.println(a[0] + ":" + a[1] + ":" + a[2] + ":" + a[3]);

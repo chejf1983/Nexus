@@ -8,6 +8,7 @@ package drv.sp.jni;
 import com.sun.jna.Memory;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
+import com.sun.jna.ptr.IntByReference;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -17,16 +18,16 @@ import java.io.InputStream;
  * @author chejf
  */
 public class sp_dev_drv {
-    
+
     private static JSpectraAsenal _lib;
     // <editor-fold defaultstate="collapsed" desc="静态接口"> 
     // <editor-fold defaultstate="collapsed" desc="驱动初始化"> 
     private static boolean IsInit = false;
-    
+
     public static boolean IsInitLib() {
         return IsInit;
     }
-    
+
     public static void InitLib(boolean clean) throws Exception {
         if (!IsInit) {
             System.load(CreateDLLTempFile("libusb0_x86.dll", clean));
@@ -36,16 +37,22 @@ public class sp_dev_drv {
             IsInit = true;
         }
     }
-    
+
     private static String CreateDLLTempFile(String Filename, boolean clean) throws Exception {
         //System.out.println(System.getProperty("user.dir") + "\\jre\\bin");
-        File tmp = new File(System.getProperty("user.dir") + "\\jre\\bin");
+//        File tmp = new File(System.getProperty("user.dir") + "\\jre\\bin");
+//        if (tmp.exists()) {
+//            tmp = new File(System.getProperty("user.dir") + "\\jre\\bin\\" + Filename);
+//        } else {
+//            tmp = new File(System.getProperty("user.dir") + "\\" + Filename);
+//        }
+
+        File tmp = new File(System.getProperty("user.dir") + "\\jre\\bin\\" + Filename);
         if (tmp.exists()) {
-            tmp = new File(System.getProperty("user.dir") + "\\jre\\bin\\" + Filename);
-        } else {
-            tmp = new File(System.getProperty("user.dir") + "\\" + Filename);
+            tmp.delete();
         }
         
+        tmp = new File(System.getProperty("user.dir") + "\\" + Filename);
         if (clean) {
             if (tmp.exists()) {
                 tmp.delete();
@@ -54,13 +61,13 @@ public class sp_dev_drv {
         } else if (!tmp.exists()) {
             InputStream in = sp_dev_drv.class.getResourceAsStream("/Resource/" + Filename);
             FileOutputStream out = new FileOutputStream(tmp);
-            
+
             int i;
             byte[] buf = new byte[1024];
             while ((i = in.read(buf)) != -1) {
                 out.write(buf, 0, i);
             }
-            
+
             in.close();
             out.close();
             System.out.println("create file:" + Filename);
@@ -109,7 +116,7 @@ public class sp_dev_drv {
     // <editor-fold defaultstate="collapsed" desc="光谱仪序列号，从0开始"> 
     //spectrometerIndex=设备序号从0开始
     private int spectrometerIndex;
-    
+
     public int SPdevIndex() {
         return this.spectrometerIndex;
     }
@@ -143,8 +150,8 @@ public class sp_dev_drv {
     // <editor-fold defaultstate="collapsed" desc="获取硬件版本"> 
     public String GetHardwareVersion() {
         byte value = _lib.SA_GetHardwareVersion(this.spectrometerIndex);
-        
-        return String.valueOf((char)value);
+
+        return String.valueOf((char) value);
     }
     // </editor-fold>
 
@@ -182,10 +189,11 @@ public class sp_dev_drv {
     //获取非线性系数
     public int GetNonlinearCalibrationPixel(float[] pfNonlinearCalibAD, float[] pfNonlinearCalibCo) {
         float[] pfNonlinearCalibPixelOrWL = new float[8];
+//        IntByReference len = new IntByReference(Native.getNativeSize(Integer.class));
         Pointer len = new Memory(Native.getNativeSize(Integer.class));
         len.setInt(0, -1);
         int ret = _lib.SA_GetNonlinearCalibrationPixel(spectrometerIndex, pfNonlinearCalibPixelOrWL, len, pfNonlinearCalibAD, pfNonlinearCalibCo);
-        return ret < 0 ? ret : (len.getInt(0));
+        return ret < 0 ? ret : len.getInt(0);
     }
     // </editor-fold>
 
@@ -206,18 +214,19 @@ public class sp_dev_drv {
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="硬件触发操作接口"> 
-    public int GetSpectumHWTrigger(double[] pdSpectumData, int iTimeOut, int TriggerMode) {
-        Pointer len = new Memory(Native.getNativeSize(Integer.class));
-        len.setInt(0, -1);
-        int ret = _lib.SA_GetSpectumHWTrigger(this.spectrometerIndex, pdSpectumData, len, iTimeOut, TriggerMode);
-        return ret < 0 ? ret : len.getInt(0);
-    }
+//    public int GetSpectumHWTrigger(double[] pdSpectumData, int iTimeOut, int TriggerMode) {
+//        Pointer len = new Memory(Native.getNativeSize(Integer.class));
+//        len.setInt(0, -1);
+//        int ret = _lib.SA_GetSpectumHWTrigger(this.spectrometerIndex, pdSpectumData, len, iTimeOut, TriggerMode);
+//        return ret < 0 ? ret : len.getInt(0);
+//    }
     // </editor-fold>
-
     // <editor-fold defaultstate="collapsed" desc="获取波长参数"> 
     public int GetWavelength(double[] pdWavelengthData) {
         Pointer len = new Memory(Native.getNativeSize(Integer.class));
         len.setInt(0, -1);
+//        IntByReference len = new IntByReference();
+//        len.setValue(0);
         int ret = _lib.SA_GetWavelength(this.spectrometerIndex, pdWavelengthData, len);
         return ret < 0 ? ret : len.getInt(0);
     }

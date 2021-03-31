@@ -202,6 +202,7 @@ public class SPDeviceAdp implements ISpDevice {
         sp_par = new SSpectralPar();
         //读取光谱个数
         this.sp_par.nodeNumber = this.dev_drv.GetSpectrometerPixelsNumber();
+        
         if (this.sp_par.nodeNumber < 0) {
             throw new Exception("获取光数据个数失败!");
         }

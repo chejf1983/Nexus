@@ -7,6 +7,8 @@ package drv.sp.jni;
 
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
+import com.sun.jna.ptr.FloatByReference;
+import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.win32.StdCallLibrary;
 
 /**
@@ -54,7 +56,7 @@ public interface JSpectraAsenal extends StdCallLibrary {
     //获取光谱仪数据， 返回读取长度, pdSpectumData 数据缓存, pSpectumNumber 缓存区大小
     int SA_GetSpectum(int spectrometerIndex, double[] pdSpectumData, Pointer pSpectumNumber);
     /* 硬件触发操作接口 返回读取长度, pdSpectumData 数据缓存, pSpectumNumber 缓存区大小 iTimeOut 超时时间 int TriggerMode 硬件触发模式*/
-    int SA_GetSpectumHWTrigger(int spectrometerIndex, double[] pdSpectumData, Pointer pSpectumNumber, int iTimeOut, int TriggerMode);
+//    int SA_GetSpectumHWTrigger(int spectrometerIndex, double[] pdSpectumData, Pointer pSpectumNumber, int iTimeOut, int TriggerMode);
     //获取波长参数, 返回读取长度,pdWavelengthData 数据缓存, pSpectumNumber 缓存区大小
     int SA_GetWavelength(int spectrometerIndex, double[] pdWavelengthData, Pointer pSpectumNumber);
     //非线性效准
