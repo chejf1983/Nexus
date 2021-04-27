@@ -8,7 +8,6 @@ package drv.sp.jni;
 import com.sun.jna.Memory;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
-import com.sun.jna.ptr.IntByReference;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;

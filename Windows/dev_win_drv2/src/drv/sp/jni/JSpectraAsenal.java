@@ -7,8 +7,6 @@ package drv.sp.jni;
 
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
-import com.sun.jna.ptr.FloatByReference;
-import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.win32.StdCallLibrary;
 
 /**
