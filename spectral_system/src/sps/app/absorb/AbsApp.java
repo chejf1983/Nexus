@@ -185,28 +185,14 @@ public class AbsApp extends CTestApp {
         }
 
         for (int i = 0; i < tmp.length; i++) {
-            double tbase = base_data.data.datavalue[i] <= 0 ? 0.001d : base_data.data.datavalue[i];
-            double tlast = data.data.datavalue[i] <= 0 ? 0.001d : data.data.datavalue[i];
-            if (tbase < tlast) {
-                tmp[i] = 0 - Math.log10(tlast / tbase);
-            } else {
-                tmp[i] = Math.log10(tbase / tlast);
-            }
-//            if (this.base_data.data.datavalue[i] <= 0 || this.base_data.data.datavalue[i] < data.data.datavalue[i]) {
-//                tmp[i] = 0;
-//            } else if (data.data.datavalue[i] <= 0) {
-//                try {
-//                    tmp[i] = Math.log10(this.base_data.data.datavalue[i] / 0.001d);
-//                } catch (Exception ex) {
-//                    tmp[i] = -1;
-//                }
+//            double tbase = base_data.data.datavalue[i] <= 0 ? 0.001d : base_data.data.datavalue[i];
+            double tbase = base_data.data.datavalue[i];
+            double tlast = data.data.datavalue[i] <= 0 ? 0.00001d : data.data.datavalue[i];
+            tmp[i] = Math.log(Math.abs(tbase / tlast));
+//            if (tbase < tlast) {
+//                tmp[i] = 0 - Math.log10(tlast / tbase);
 //            } else {
-//                try {
-//                    tmp[i] = Math.log10(this.base_data.data.datavalue[i] / data.data.datavalue[i]);
-//                } catch (Exception ex) {
-//                    tmp[i] = -1;
-//                }
-////                    tmp[i] = tmp[i] > 100 ? 100 : tmp[i];                
+//                tmp[i] = Math.log10(tbase / tlast);
 //            }
             tmp[i] = new BigDecimal(tmp[i]).setScale(6, BigDecimal.ROUND_HALF_UP).doubleValue();
         }

@@ -248,6 +248,11 @@ public class DeviceControlPanel extends javax.swing.JPanel {
                 ToggleButton_DarkEnableItemStateChanged(evt);
             }
         });
+        ToggleButton_DarkEnable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ToggleButton_DarkEnableActionPerformed(evt);
+            }
+        });
 
         Button_DarkModify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nexus/device/resources/darkcollect.png"))); // NOI18N
         Button_DarkModify.setEnabled(false);
@@ -508,6 +513,8 @@ public class DeviceControlPanel extends javax.swing.JPanel {
 
     private void Button_DarkModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_DarkModifyActionPerformed
         SpectralPlatService.GetInstance().GetAppManager().GetCurrentApp().DKTest();
+        ToggleButton_DarkEnable.setSelected(true);
+//        ToggleButton_DarkEnable
     }//GEN-LAST:event_Button_DarkModifyActionPerformed
 
     private void Button_SetParameterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_SetParameterActionPerformed
@@ -552,6 +559,10 @@ public class DeviceControlPanel extends javax.swing.JPanel {
     private void ToggleButton_LightEnableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToggleButton_LightEnableActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ToggleButton_LightEnableActionPerformed
+
+    private void ToggleButton_DarkEnableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToggleButton_DarkEnableActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ToggleButton_DarkEnableActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

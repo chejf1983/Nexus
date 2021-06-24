@@ -286,6 +286,7 @@
               </Properties>
               <Events>
                 <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ToggleButton_DarkEnableItemStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ToggleButton_DarkEnableActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Button_DarkModify">
