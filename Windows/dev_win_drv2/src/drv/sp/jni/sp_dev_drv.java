@@ -50,7 +50,7 @@ public class sp_dev_drv {
         if (tmp.exists()) {
             tmp.delete();
         }
-        
+
         tmp = new File(System.getProperty("user.dir") + "\\" + Filename);
         if (clean) {
             if (tmp.exists()) {
@@ -202,6 +202,7 @@ public class sp_dev_drv {
     }
     // </editor-fold>
 
+
     // <editor-fold defaultstate="collapsed" desc="光谱仪采集"> 
     // <editor-fold defaultstate="collapsed" desc="获取光谱仪数据"> 
     public int GetSpectum(double[] pdSpectumData) {
@@ -220,6 +221,7 @@ public class sp_dev_drv {
 //        return ret < 0 ? ret : len.getInt(0);
 //    }
     // </editor-fold>
+    
     // <editor-fold defaultstate="collapsed" desc="获取波长参数"> 
     public int GetWavelength(double[] pdWavelengthData) {
         Pointer len = new Memory(Native.getNativeSize(Integer.class));
@@ -249,6 +251,13 @@ public class sp_dev_drv {
     }
     // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="平滑窗口"> 
+    public int SetWindow(int window) {
+        //1-10;
+        return _lib.SA_SetWindow(window);
+    }
+    // </editor-fold>
+    
     // <editor-fold defaultstate="collapsed" desc="设置触发模式"> 
     public int SetSpectumTriggerMode(int TriggerMode) {
         return _lib.SA_SetSpectumTriggerMode(this.spectrometerIndex, TriggerMode);
@@ -293,7 +302,7 @@ public class sp_dev_drv {
     // </editor-fold>
     // </editor-fold>
 
-//    // <editor-fold defaultstate="collapsed" desc="用户存储操作接口"> 
+    //    // <editor-fold defaultstate="collapsed" desc="用户存储操作接口"> 
 //    /* 用户存储操作接口 */
 //    static native int SA_WriteUserMemory(int spectrometerIndex, int MEM, int Address, int length, byte[] UserData);
 //

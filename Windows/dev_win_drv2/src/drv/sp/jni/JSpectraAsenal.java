@@ -33,6 +33,8 @@ public interface JSpectraAsenal extends StdCallLibrary {
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="基本设置"> 
+    int SA_SetWindow(int window);
+    
     String SA_GetSpectrometersName(int spectrometerIndex);
 
     int SA_GetMaxIntegrationTime(int spectrometerIndex);

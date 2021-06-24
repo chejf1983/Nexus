@@ -74,6 +74,11 @@ public class SPDeviceAdp implements ISpDevice {
         //读取波长数据
         double[] data = new double[this.sp_par.nodeNumber];
         double[] wave = new double[wave_array.length];
+        //窗口平滑
+//        if (this.collect_config.window >= 0) {
+        this.collect_config.window = dev_drv.SetWindow(this.collect_config.window);
+//        System.out.println(this.collect_config.window);
+
         if (this.dev_drv.GetSpectum(data) <= 0) {
             throw new Exception("数据采集失败!");
         }
@@ -91,11 +96,11 @@ public class SPDeviceAdp implements ISpDevice {
             System.arraycopy(wave, 0, data, 0, data.length);
         }
 
-        //窗口平滑
-        if (this.collect_config.window > 1) {
-            SPDataWindowAverage.WindowAverage(data, this.collect_config.window);
-        }
-
+//            for (int i = 0; i < data.length; i++) {
+//                data[i] *= collect_config.window;
+//            }
+//            SPDataWindowAverage.WindowAverage(data, this.collect_config.window);
+//        }
         System.arraycopy(this.wave_array, 0, wave, 0, wave.length);
         SSpectralDataPacket ret_data = new SSpectralDataPacket(wave, data);
 
@@ -202,7 +207,7 @@ public class SPDeviceAdp implements ISpDevice {
         sp_par = new SSpectralPar();
         //读取光谱个数
         this.sp_par.nodeNumber = this.dev_drv.GetSpectrometerPixelsNumber();
-        
+
         if (this.sp_par.nodeNumber < 0) {
             throw new Exception("获取光数据个数失败!");
         }
