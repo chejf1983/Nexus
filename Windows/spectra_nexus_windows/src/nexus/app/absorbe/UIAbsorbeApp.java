@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 import nahon.comm.event.NEvent;
 import nahon.comm.faultsystem.LogCenter;
 import java.io.IOException;
-import nahon.comm.event.NEventListener;
 import nexus.main.compent.FileDialogHelp;
 import nexus.main.compent.ImageHelper;
 import org.jfree.chart.ChartUtilities;
@@ -81,16 +80,19 @@ public class UIAbsorbeApp extends javax.swing.JPanel {
 
         this.commapp.TESTEVENT_CENTER.RegeditListener((NEvent<Integer> event) -> {
             if (event.GetEvent() == AbsApp.REFTEST) {
-                sp_pane.UpdateRefData((SSpectralDataPacket) event.Info());
+                SSpectralDataPacket name = (SSpectralDataPacket) event.Info();
+                sp_pane.UpdateRefData(name.data.waveIndex, name.data.datavalue);
             }
-            
+
             if (event.GetEvent() == AbsApp.DKTEST) {
-                sp_pane.UpdateMainData((SSpectralDataPacket) event.Info());
+                SSpectralDataPacket name = (SSpectralDataPacket) event.Info();
+                sp_pane.UpdateRefData(name.data.waveIndex, name.data.datavalue);
             }
-            
+
             if (event.GetEvent() == AbsApp.TESTDATA) {
-                sp_pane.UpdateMainData(((RateData) event.Info()).testdata);
-                rate_pane.UpdateMainData((RateData) event.Info());
+                RateData name = (RateData) event.Info();
+                sp_pane.UpdateMainData(name.testdata.data.waveIndex, name.testdata.data.datavalue);
+                rate_pane.UpdateMainData(name.testdata.data.waveIndex, name.Rate);
             }
         });
     }
@@ -264,16 +266,30 @@ public class UIAbsorbeApp extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_Button_SaveDataActionPerformed
 
+    private void updateSnapShot() {
+        RateData[] snapshots = this.commapp.GetSnapShots();
+        double[] wave = snapshots.length == 0 ? new double[0] : snapshots[0].testdata.data.waveIndex;
+        double[][] data = new double[snapshots.length][];
+        for (int i = 0; i < snapshots.length; i++) {
+            data[i] = snapshots[i].testdata.data.datavalue;
+        }
+        this.sp_pane.UpdataChartSnapShort(wave, data);
+
+        wave = snapshots.length == 0 ? new double[0] : snapshots[0].testdata.data.waveIndex;
+        for (int i = 0; i < snapshots.length; i++) {
+            data[i] = snapshots[i].Rate;
+        }
+        this.rate_pane.UpdataChartSnapShort(wave, data);
+
+    }
     private void Button_AddSnapShotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AddSnapShotActionPerformed
         this.commapp.AddSnapShot();
-        this.sp_pane.UpdataChartSnapShort(this.commapp.GetSnapShots());
-        this.rate_pane.UpdataChartSnapShort(this.commapp.GetSnapShots());
+        updateSnapShot();
     }//GEN-LAST:event_Button_AddSnapShotActionPerformed
 
     private void Button_DeletSnapShotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_DeletSnapShotActionPerformed
         this.commapp.DelSnapShot();
-        this.sp_pane.UpdataChartSnapShort(this.commapp.GetSnapShots());
-        this.rate_pane.UpdataChartSnapShort(this.commapp.GetSnapShots());
+        updateSnapShot();
     }//GEN-LAST:event_Button_DeletSnapShotActionPerformed
 
     private void ToggleButton_DataTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToggleButton_DataTableActionPerformed
@@ -292,8 +308,7 @@ public class UIAbsorbeApp extends javax.swing.JPanel {
             File file = FileDialogHelp.GetFilePath(".xls");
             if (file != null) {
                 this.commapp.ReadExcel(file.getAbsolutePath());
-                this.sp_pane.UpdataChartSnapShort(this.commapp.GetSnapShots());
-                this.rate_pane.UpdataChartSnapShort(this.commapp.GetSnapShots());
+                updateSnapShot();
                 LogCenter.Instance().ShowMessBox(Level.INFO, "读取成功!");
             }
         } catch (Exception ex) {

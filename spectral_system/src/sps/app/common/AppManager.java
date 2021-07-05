@@ -109,7 +109,6 @@ public class AppManager {
         this.is_running = true;
         TestEvent.CreateEvent(is_running);
         //通知更新测试条件
-//        this.TestConfig.ConfigUpdateEvent.CreateEvent(null);
         SpectralPlatService.GetInstance().GetThreadPools().submit(() -> {
             comd.run();
             is_running = false;

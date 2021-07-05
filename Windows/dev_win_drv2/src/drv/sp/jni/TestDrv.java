@@ -30,9 +30,10 @@ public class TestDrv {
             if (dev_num > 0) {
                 sp_dev_drv drv = new sp_dev_drv(0);
                 System.out.println(drv.GetHardwareVersion());
-
                 double[] pdSpectumData = new double[3000];
+//                System.out.println(drv.GetWavelength(pdSpectumData));
                 System.out.println(drv.GetSpectum(pdSpectumData));
+                System.out.println(pdSpectumData[2047]);
                 float[] ad = new float[100];
                 float[] cal = new float[100];
                 int num = drv.GetNonlinearCalibrationPixel(ad, cal);

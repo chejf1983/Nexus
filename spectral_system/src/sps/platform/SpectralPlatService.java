@@ -6,7 +6,6 @@ package sps.platform;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 import nahon.comm.faultsystem.LogCenter;
 import sps.app.common.AppManager;
 import sps.control.manager.SpDevManager;

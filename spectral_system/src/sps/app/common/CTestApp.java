@@ -132,6 +132,9 @@ public abstract class CTestApp {
 
             //设置测试条件
             dev.EnableExtern(value);
+            
+            //更新标志
+            parent.TestConfig.collect_config.light_switch = value;
 
             return true;
         } catch (Exception ex) {
