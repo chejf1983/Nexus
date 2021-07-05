@@ -22,8 +22,10 @@ import nexus.app.transmit.UITransApp;
 import nexus.device.manager.LeftPane;
 import nexus.main.compent.AboutDialog;
 import sps.app.absorb.AbsApp;
+import sps.app.common.AppManager;
 import sps.app.std.StanderApp;
 import sps.app.transmit.TrsApp;
+import sps.control.manager.SpDevManager;
 import sps.dev.data.SSCollectConfig;
 import sps.platform.SpectralPlatService;
 import sps.platform.SystemConfig;
@@ -100,7 +102,7 @@ public class MainForm extends javax.swing.JFrame {
     private CardLayout applicationAreaLayout = new CardLayout();
 
     private void InitApplication() {
-        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
+        AppManager.R().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
             //更新控制面板使能状态
             Menu_Application.setEnabled(!event.GetEvent());
         });
@@ -119,7 +121,7 @@ public class MainForm extends javax.swing.JFrame {
         MenuItem_Source.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             if (MenuItem_Source.isSelected()) {
                 applicationAreaLayout.show(ApplicationArea, UIStanderApp.class.getSimpleName());
-                SpectralPlatService.GetInstance().GetAppManager().SwitchApp(StanderApp.class.getSimpleName());
+                AppManager.R().SwitchApp(StanderApp.class.getSimpleName());
             }
         });
 
@@ -133,7 +135,7 @@ public class MainForm extends javax.swing.JFrame {
         MenuItem_Reflact.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             if (MenuItem_Reflact.isSelected()) {
                 applicationAreaLayout.show(ApplicationArea, UITransApp.class.getSimpleName());
-                SpectralPlatService.GetInstance().GetAppManager().SwitchApp(TrsApp.class.getSimpleName());
+                AppManager.R().SwitchApp(TrsApp.class.getSimpleName());
             }
         });
         
@@ -141,7 +143,7 @@ public class MainForm extends javax.swing.JFrame {
         MenuItem_Absorbe.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
             if (MenuItem_Absorbe.isSelected()) {
                 applicationAreaLayout.show(ApplicationArea, UIAbsorbeApp.class.getSimpleName());
-                SpectralPlatService.GetInstance().GetAppManager().SwitchApp(AbsApp.class.getSimpleName());
+                AppManager.R().SwitchApp(AbsApp.class.getSimpleName());
             }
         });
 
@@ -150,7 +152,7 @@ public class MainForm extends javax.swing.JFrame {
 //            public void stateChanged(javax.swing.event.ChangeEvent evt) {
 //                if (MenuItem_TNP.isSelected()) {
 //                    applicationAreaLayout.show(ApplicationArea, UITNPApp.class.getSimpleName());
-////                    SpectralPlatService.GetInstance().GetAppManager().SwitchApp(AppManager.AppType.ABSORBE);
+////                    AppManager.R().SwitchApp(AppManager.AppType.ABSORBE);
 //                }
 //            }
 //        });
@@ -169,13 +171,13 @@ public class MainForm extends javax.swing.JFrame {
         }, 0, 1000);
 
         //显示时间
-        SpectralPlatService.GetInstance().GetAppManager().TimeFlag.TimeConsumeEvent.RegeditListener((NEvent<Long> event) -> {
+        AppManager.R().TimeFlag.TimeConsumeEvent.RegeditListener((NEvent<Long> event) -> {
             java.awt.EventQueue.invokeLater(() -> {
                 Label_time.setText("耗时" + ":" + (double) event.GetEvent() / 1000000 + "ms");
             });
         });
 
-        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
+        AppManager.R().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
             java.awt.EventQueue.invokeLater(() -> {
                 ProgressBar.setIndeterminate(event.GetEvent());
             });
@@ -428,9 +430,9 @@ public class MainForm extends javax.swing.JFrame {
 
     private void MenuItem_FilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItem_FilterActionPerformed
         if (MenuItem_Filter.isSelected()) {
-            SpectralPlatService.GetInstance().GetAppManager().TestConfig.collect_config.filterKey = SSCollectConfig.BattwoseKey;
+            SpDevManager.R().TestConfig.collect_config.filterKey = SSCollectConfig.BattwoseKey;
         } else {
-            SpectralPlatService.GetInstance().GetAppManager().TestConfig.collect_config.filterKey = SSCollectConfig.NoneKey;
+            SpDevManager.R().TestConfig.collect_config.filterKey = SSCollectConfig.NoneKey;
         }
     }//GEN-LAST:event_MenuItem_FilterActionPerformed
 

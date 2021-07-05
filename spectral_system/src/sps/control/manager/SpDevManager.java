@@ -8,6 +8,7 @@ package sps.control.manager;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import nahon.comm.faultsystem.LogCenter;
+import sps.app.common.GlobalConfig;
 import sps.platform.SpectralPlatService;
 
 /**
@@ -16,7 +17,20 @@ import sps.platform.SpectralPlatService;
  */
 public class SpDevManager {
 
+    private SpDevManager() {
+    }
+    private static SpDevManager instance;
+
+    public static SpDevManager R() {
+        if (instance == null) {
+            instance = new SpDevManager();
+        }
+        return instance;
+    }
+
     // <editor-fold defaultstate="collapsed" desc="搜索设备"> 
+    public GlobalConfig TestConfig = new GlobalConfig();
+
     private ArrayList<ISpDevice> devlist = new ArrayList();
     private static ISPDevSearch search_instance;
 

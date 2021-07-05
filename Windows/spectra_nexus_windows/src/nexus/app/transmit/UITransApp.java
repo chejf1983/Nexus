@@ -13,9 +13,9 @@ import nexus.main.compent.ImageHelper;
 import org.jfree.chart.ChartUtilities;
 import sps.app.absorb.AbsApp;
 import sps.app.absorb.RateData;
+import sps.app.common.AppManager;
 import sps.app.transmit.TrsApp;
 import sps.dev.data.SSpectralDataPacket;
-import sps.platform.SpectralPlatService;
 
 /*
  * To change this template, choose Tools | Templates
@@ -73,9 +73,9 @@ public class UITransApp extends javax.swing.JPanel {
     private TrsApp commapp;
 
     private void InitAppControl() {
-        commapp = SpectralPlatService.GetInstance().GetAppManager().GetTrsApp();
+        commapp = AppManager.R().GetTrsApp();
 
-        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
+        AppManager.R().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
             //更新控制面板使能状态
             Button_RefCollect.setEnabled(!event.GetEvent());
         });

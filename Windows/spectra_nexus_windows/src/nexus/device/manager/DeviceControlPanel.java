@@ -10,8 +10,10 @@ import nahon.comm.event.NEventListener;
 import nahon.comm.faultsystem.LogCenter;
 import nexus.devcie.config.ConfigDialog;
 import nexus.main.entry.MainForm;
+import sps.app.common.AppManager;
 import sps.app.common.GlobalConfig;
 import sps.control.manager.ISpDevice;
+import sps.control.manager.SpDevManager;
 import sps.platform.SpectralPlatService;
 
 /**
@@ -56,7 +58,7 @@ public class DeviceControlPanel extends javax.swing.JPanel {
 
     // <editor-fold defaultstate="collapsed" desc="界面参数初始化">
     private void InitDeviceInfo() {
-        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener(new NEventListener<Boolean>() {
+        AppManager.R().TestEvent.RegeditListener(new NEventListener<Boolean>() {
             @Override
             public void recevieEvent(NEvent<Boolean> event) {
                 //更新控制面板使能状态
@@ -64,12 +66,12 @@ public class DeviceControlPanel extends javax.swing.JPanel {
             }
         });
 
-        UpdateControlPaneState(SpectralPlatService.GetInstance().GetAppManager().IsRunning());
+        UpdateControlPaneState(AppManager.R().IsRunning());
 
-        GlobalConfig TestConfig = SpectralPlatService.GetInstance().GetAppManager().TestConfig;
+        GlobalConfig TestConfig = SpDevManager.R().TestConfig;
 
         //跟新按电流使能状态
-        SpectralPlatService.GetInstance().GetAppManager().TestConfig.ConfigUpdateEvent.RegeditListener(new NEventListener() {
+        SpDevManager.R().TestConfig.ConfigUpdateEvent.RegeditListener(new NEventListener() {
             @Override
             public void recevieEvent(NEvent event) {
                 //更新平均次数数据
@@ -499,7 +501,7 @@ public class DeviceControlPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ToggleButton_LightEnableItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ToggleButton_LightEnableItemStateChanged
-        SpectralPlatService.GetInstance().GetAppManager().GetCurrentApp().EnableLight(ToggleButton_LightEnable.isSelected());
+        AppManager.R().GetCurrentApp().EnableLight(ToggleButton_LightEnable.isSelected());
 
         if (ToggleButton_LightEnable.isSelected()) {
             ToggleButton_LightEnable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nexus/device/resources/light_on.png")));
@@ -509,7 +511,7 @@ public class DeviceControlPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ToggleButton_LightEnableItemStateChanged
 
     private void ToggleButton_DarkEnableItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ToggleButton_DarkEnableItemStateChanged
-        SpectralPlatService.GetInstance().GetAppManager().TestConfig.collect_config.dk_enable = this.ToggleButton_DarkEnable.isSelected();
+        SpDevManager.R().TestConfig.collect_config.dk_enable = this.ToggleButton_DarkEnable.isSelected();
         //更新按电流按钮图标
         if (this.ToggleButton_DarkEnable.isSelected()) {
             PNG_DarkModify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nexus/device/resources/switchon.png")));
@@ -520,7 +522,7 @@ public class DeviceControlPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ToggleButton_DarkEnableItemStateChanged
 
     private void ToggleButton_LinearEnableItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ToggleButton_LinearEnableItemStateChanged
-        SpectralPlatService.GetInstance().GetAppManager().TestConfig.collect_config.linearEnable = this.ToggleButton_LinearEnable.isSelected();
+        SpDevManager.R().TestConfig.collect_config.linearEnable = this.ToggleButton_LinearEnable.isSelected();
 
         if (this.ToggleButton_LinearEnable.isSelected()) {
             PNG_LineCalibrate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/nexus/device/resources/switchon.png")));
@@ -530,30 +532,30 @@ public class DeviceControlPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ToggleButton_LinearEnableItemStateChanged
 
     private void Button_AutoTestTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_AutoTestTimeActionPerformed
-        SpectralPlatService.GetInstance().GetAppManager().GetCurrentApp().AutoTestTime();
+        AppManager.R().GetCurrentApp().AutoTestTime();
     }//GEN-LAST:event_Button_AutoTestTimeActionPerformed
 
     private void Button_SingelCollectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_SingelCollectActionPerformed
-        SpectralPlatService.GetInstance().GetAppManager().GetCurrentApp().SingleTest();
+        AppManager.R().GetCurrentApp().SingleTest();
     }//GEN-LAST:event_Button_SingelCollectActionPerformed
 
     private void Button_FrequenCollectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_FrequenCollectActionPerformed
-        SpectralPlatService.GetInstance().GetAppManager().GetCurrentApp().SusTainTest();
+        AppManager.R().GetCurrentApp().SusTainTest();
     }//GEN-LAST:event_Button_FrequenCollectActionPerformed
 
     private void Button_StopCollectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_StopCollectActionPerformed
-        SpectralPlatService.GetInstance().GetAppManager().GetCurrentApp().StopTest();
+        AppManager.R().GetCurrentApp().StopTest();
     }//GEN-LAST:event_Button_StopCollectActionPerformed
 
     private void Button_DarkModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_DarkModifyActionPerformed
-        SpectralPlatService.GetInstance().GetAppManager().GetCurrentApp().DKTest();
+        AppManager.R().GetCurrentApp().DKTest();
         ToggleButton_DarkEnable.setSelected(true);
     }//GEN-LAST:event_Button_DarkModifyActionPerformed
 
     private void Button_SetParameterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_SetParameterActionPerformed
-        SpectralPlatService.GetInstance().GetAppManager().RunCommand(() -> {
+        AppManager.R().RunCommand(() -> {
             //显示光谱仪参数设置
-            try (ISpDevice dev = SpectralPlatService.GetInstance().GetSingleDevManager().GetSelectDev()) {
+            try (ISpDevice dev = SpDevManager.R().GetSelectDev()) {
                 dev.Open();
 
 //                System.out.println(MainForm.instance);
@@ -567,7 +569,7 @@ public class DeviceControlPanel extends javax.swing.JPanel {
 
     private void IntegervalTime_InputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IntegervalTime_InputFocusLost
         try {
-            SpectralPlatService.GetInstance().GetAppManager().TestConfig.collect_par.interval_time = (int) (Float.valueOf(this.IntegervalTime_Input.getText()) * 1000);
+            SpDevManager.R().TestConfig.collect_par.interval_time = (int) (Float.valueOf(this.IntegervalTime_Input.getText()) * 1000);
         } catch (NumberFormatException ex) {
             LogCenter.Instance().SendFaultReport(Level.SEVERE, ex);
         }
@@ -575,7 +577,7 @@ public class DeviceControlPanel extends javax.swing.JPanel {
 
     private void IntegeralTime_InputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_IntegeralTime_InputFocusLost
         try {
-            SpectralPlatService.GetInstance().GetAppManager().TestConfig.collect_par.integralTime = Float.valueOf(this.IntegeralTime_Input.getText());
+            SpDevManager.R().TestConfig.collect_par.integralTime = Float.valueOf(this.IntegeralTime_Input.getText());
         } catch (NumberFormatException ex) {
             LogCenter.Instance().SendFaultReport(Level.SEVERE, ex);
         }
@@ -583,7 +585,7 @@ public class DeviceControlPanel extends javax.swing.JPanel {
 
     private void Average_InputFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Average_InputFocusLost
         try {
-            SpectralPlatService.GetInstance().GetAppManager().TestConfig.collect_par.averageTime = Integer.valueOf(this.Average_Input.getText());
+            SpDevManager.R().TestConfig.collect_par.averageTime = Integer.valueOf(this.Average_Input.getText());
         } catch (Exception ex) {
             LogCenter.Instance().SendFaultReport(Level.SEVERE, ex);
         }
@@ -595,7 +597,7 @@ public class DeviceControlPanel extends javax.swing.JPanel {
 
     private void Average_Input1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_Average_Input1FocusLost
         try {
-            SpectralPlatService.GetInstance().GetAppManager().TestConfig.collect_config.window = Integer.valueOf(this.Average_Input1.getText());
+            SpDevManager.R().TestConfig.collect_config.window = Integer.valueOf(this.Average_Input1.getText());
         } catch (Exception ex) {
             LogCenter.Instance().SendFaultReport(Level.SEVERE, ex);
         }

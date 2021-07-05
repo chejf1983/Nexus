@@ -18,6 +18,7 @@ import sps.app.common.AppManager;
 import sps.app.common.CTestApp;
 import static sps.app.common.CTestApp.TESTDATA;
 import sps.control.manager.ISpDevice;
+import sps.control.manager.SpDevManager;
 import sps.dev.data.SSpectralDataPacket;
 import sps.platform.SpectralPlatService;
 
@@ -26,10 +27,6 @@ import sps.platform.SpectralPlatService;
  * @author chejf
  */
 public class AbsApp extends CTestApp {
-
-    public AbsApp(AppManager parent) {
-        super(parent);
-    }
 
     // <editor-fold defaultstate="collapsed" desc="基本操作"> 
     // <editor-fold defaultstate="collapsed" desc="snapshot操作">   
@@ -217,19 +214,19 @@ public class AbsApp extends CTestApp {
     private SSpectralDataPacket base_data = null;
 
     public void CollectReflectLight() {
-        this.parent.RunCommand(() -> {
-            parent.TimeFlag.SetTimeFlag();
-            try (ISpDevice dev = SpectralPlatService.GetInstance().GetSingleDevManager().GetSelectDev()) {
+        AppManager.R().RunCommand(() -> {
+            AppManager.R().TimeFlag.SetTimeFlag();
+            try (ISpDevice dev = SpDevManager.R().GetSelectDev()) {
                 //申请设备控制权
                 dev.Open();
 
                 //设置测试条件
-                dev.SetCollectPar(parent.TestConfig.collect_par);
-                dev.SetCollectConfig(parent.TestConfig.collect_config);
+                dev.SetCollectPar(SpDevManager.R().TestConfig.collect_par);
+                dev.SetCollectConfig(SpDevManager.R().TestConfig.collect_config);
 
                 //采集数据
                 SSpectralDataPacket collect_data = dev.CollectData();
-                parent.TimeFlag.StopTime();
+                AppManager.R().TimeFlag.StopTime();
 
                 //保存参考光
                 this.base_data = collect_data;

@@ -52,26 +52,6 @@ public class SpectralPlatService {
         config.SaveToFile();
     }
 
-    //算法库
-    private AppManager appmanager;
-
-    public AppManager GetAppManager() {
-        //初始化控制管理器
-        if (this.appmanager == null) {
-            this.appmanager = new AppManager();
-        }
-        return this.appmanager;
-    }
-
-    private SpDevManager devsearch;
-
-    public SpDevManager GetSingleDevManager() {
-        if (devsearch == null) {
-            this.devsearch = new SpDevManager();
-        }
-        return this.devsearch;
-    }
-
     //线程池
     private ExecutorService systemthreadpool;
 

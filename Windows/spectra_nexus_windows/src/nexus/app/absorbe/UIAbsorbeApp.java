@@ -12,6 +12,7 @@ import nexus.main.compent.ImageHelper;
 import org.jfree.chart.ChartUtilities;
 import sps.app.absorb.AbsApp;
 import sps.app.absorb.RateData;
+import sps.app.common.AppManager;
 import sps.dev.data.SSpectralDataPacket;
 import sps.platform.SpectralPlatService;
 
@@ -71,9 +72,9 @@ public class UIAbsorbeApp extends javax.swing.JPanel {
     private AbsApp commapp;
 
     private void InitAppControl() {
-        commapp = SpectralPlatService.GetInstance().GetAppManager().GetAbsApp();
+        commapp = AppManager.R().GetAbsApp();
 
-        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
+        AppManager.R().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
             //更新控制面板使能状态
             Button_RefCollect.setEnabled(!event.GetEvent());
         });

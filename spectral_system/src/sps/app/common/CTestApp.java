@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import nahon.comm.event.NEventCenter;
 import nahon.comm.faultsystem.LogCenter;
 import sps.control.manager.ISpDevice;
+import sps.control.manager.SpDevManager;
 import sps.dev.data.SSpectralDataPacket;
 import sps.platform.SpectralPlatService;
 
@@ -18,13 +19,6 @@ import sps.platform.SpectralPlatService;
  * @author chejf
  */
 public abstract class CTestApp {
-
-    protected AppManager parent;
-
-    public CTestApp(AppManager parent) {
-        this.parent = parent;
-    }
-
     // <editor-fold defaultstate="collapsed" desc="设备操作列表">  
     public static int DKTEST = 0;
     public static int TESTDATA = 1;
@@ -34,18 +28,18 @@ public abstract class CTestApp {
 
     // <editor-fold defaultstate="collapsed" desc="暗电流测试">  
     public void DKTest() {
-        this.parent.RunCommand(() -> {
-            try (ISpDevice dev = SpectralPlatService.GetInstance().GetSingleDevManager().GetSelectDev()) {
+        AppManager.R().RunCommand(() -> {
+            try (ISpDevice dev = SpDevManager.R().GetSelectDev()) {
                 //申请设备控制权
                 dev.Open();
 
                 //设置测试条件
-                dev.SetCollectPar(this.parent.TestConfig.collect_par);
+                dev.SetCollectPar(SpDevManager.R().TestConfig.collect_par);
 
-                this.parent.TimeFlag.SetTimeFlag();
+                AppManager.R().TimeFlag.SetTimeFlag();
                 //采集暗电流
                 SSpectralDataPacket dk_data = dev.DKModify();
-                parent.TimeFlag.StopTime();
+                AppManager.R().TimeFlag.StopTime();
 
                 //显示数据
                 TESTEVENT_CENTER.CreateEvent(DKTEST, dk_data);
@@ -58,19 +52,19 @@ public abstract class CTestApp {
 
     // <editor-fold defaultstate="collapsed" desc="单次测试">  
     public void SingleTest() {
-        this.parent.RunCommand(() -> {
-            try (ISpDevice dev = SpectralPlatService.GetInstance().GetSingleDevManager().GetSelectDev()) {
+        AppManager.R().RunCommand(() -> {
+            try (ISpDevice dev = SpDevManager.R().GetSelectDev()) {
                 //申请设备控制权
                 dev.Open();
 
                 //设置测试条件
-                dev.SetCollectPar(parent.TestConfig.collect_par);
-                dev.SetCollectConfig(parent.TestConfig.collect_config);
+                dev.SetCollectPar(SpDevManager.R().TestConfig.collect_par);
+                dev.SetCollectConfig(SpDevManager.R().TestConfig.collect_config);
 
-                parent.TimeFlag.SetTimeFlag();
+                AppManager.R().TimeFlag.SetTimeFlag();
                 //采集数据
                 SSpectralDataPacket test_data = dev.CollectData();
-                parent.TimeFlag.StopTime();
+                AppManager.R().TimeFlag.StopTime();
 
                 //显示数据
                 DataModify(test_data);
@@ -84,27 +78,27 @@ public abstract class CTestApp {
 
     // <editor-fold defaultstate="collapsed" desc="连续测试">  
     public void SusTainTest() {
-        this.parent.RunCommand(() -> {
-            try (ISpDevice dev = SpectralPlatService.GetInstance().GetSingleDevManager().GetSelectDev()) {
+        AppManager.R().RunCommand(() -> {
+            try (ISpDevice dev = SpDevManager.R().GetSelectDev()) {
                 //申请设备控制权
                 dev.Open();
 
                 test_flag = true;
 
                 //设置测试条件
-                dev.SetCollectPar(this.parent.TestConfig.collect_par);
-                dev.SetCollectConfig(this.parent.TestConfig.collect_config);
+                dev.SetCollectPar(SpDevManager.R().TestConfig.collect_par);
+                dev.SetCollectConfig(SpDevManager.R().TestConfig.collect_config);
 
                 while (test_flag) {
-                    this.parent.TimeFlag.SetTimeFlag();
+                    AppManager.R().TimeFlag.SetTimeFlag();
                     //采集数据
                     SSpectralDataPacket test_data = dev.CollectData();
-                    parent.TimeFlag.StopTime();
+                    AppManager.R().TimeFlag.StopTime();
 
                     //显示数据
                     DataModify(test_data);
 
-                    TimeUnit.MILLISECONDS.sleep((long) this.parent.TestConfig.collect_par.interval_time);
+                    TimeUnit.MILLISECONDS.sleep((long) SpDevManager.R().TestConfig.collect_par.interval_time);
                 }
             } catch (Exception ex) {
                 LogCenter.Instance().SendFaultReport(Level.SEVERE, "采集异常:", ex);
@@ -126,7 +120,7 @@ public abstract class CTestApp {
 
     // <editor-fold defaultstate="collapsed" desc="开关灯">  
     public boolean EnableLight(boolean value) {
-        try (ISpDevice dev = SpectralPlatService.GetInstance().GetSingleDevManager().GetSelectDev()) {
+        try (ISpDevice dev = SpDevManager.R().GetSelectDev()) {
             //申请设备控制权
             dev.Open();
 
@@ -134,7 +128,7 @@ public abstract class CTestApp {
             dev.EnableExtern(value);
             
             //更新标志
-            parent.TestConfig.collect_config.light_switch = value;
+            SpDevManager.R().TestConfig.collect_config.light_switch = value;
 
             return true;
         } catch (Exception ex) {
@@ -151,12 +145,12 @@ public abstract class CTestApp {
     public static int MaxIntegerTime = 10000;
 
     public void AutoTestTime() {
-        this.parent.RunCommand(() -> {
+        AppManager.R().RunCommand(() -> {
             //显示光谱仪参数设置
-            try (ISpDevice dev = SpectralPlatService.GetInstance().GetSingleDevManager().GetSelectDev()) {
+            try (ISpDevice dev = SpDevManager.R().GetSelectDev()) {
                 dev.Open();
                 test_flag = true;
-                GlobalConfig TestConfig = this.parent.TestConfig;
+                GlobalConfig TestConfig = SpDevManager.R().TestConfig;
                 dev.SetCollectConfig(TestConfig.collect_config);
                 //从1ms开始寻找
                 TestConfig.collect_par.integralTime = 1;

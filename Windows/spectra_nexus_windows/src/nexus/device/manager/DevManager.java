@@ -15,6 +15,7 @@ import javax.swing.JList;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import nahon.comm.faultsystem.LogCenter;
+import sps.app.common.AppManager;
 import sps.control.manager.SpDevManager;
 import sps.platform.SpectralPlatService;
 
@@ -25,7 +26,7 @@ import sps.platform.SpectralPlatService;
 public class DevManager extends javax.swing.JPanel {
 
     // <editor-fold defaultstate="collapsed" desc="初始化代码"> 
-    private final SpDevManager devmanager = SpectralPlatService.GetInstance().GetSingleDevManager();
+    private final SpDevManager devmanager = SpDevManager.R();
 
     /**
      * Creates new form DevManager
@@ -183,20 +184,17 @@ public class DevManager extends javax.swing.JPanel {
     //搜索设备
     private void Button_DetectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_DetectActionPerformed
         //关闭搜索按钮，避免重复触发
-        SpectralPlatService.GetInstance().GetAppManager().RunCommand(new Runnable() {
-            @Override
-            public void run() {
-                Logger.getGlobal().log(Level.INFO, "进入搜索进程");
-
-                //搜索所有IO
-                if (devmanager.SearchDevice()) {
-                    //获取获得的设备
-                    if (devmanager.GetDevList().length > 0) {
-                        //默认连接第一个设备
-                        SetSelectDev(0);
-                    } else {
-                        LogCenter.Instance().SendFaultReport(Level.SEVERE, "没有找到设备");
-                    }
+        AppManager.R().RunCommand(() -> {
+            Logger.getGlobal().log(Level.INFO, "进入搜索进程");
+            
+            //搜索所有IO
+            if (devmanager.SearchDevice()) {
+                //获取获得的设备
+                if (devmanager.GetDevList().length > 0) {
+                    //默认连接第一个设备
+                    SetSelectDev(0);
+                } else {
+                    LogCenter.Instance().SendFaultReport(Level.SEVERE, "没有找到设备");
                 }
             }
         });

@@ -7,7 +7,6 @@ import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import nahon.comm.event.NEvent;
-import nahon.comm.event.NEventListener;
 import nahon.comm.faultsystem.LogCenter;
 import chart.data.CSPData;
 import chart.spchart.panel.SpectralChartPane;
@@ -19,10 +18,10 @@ import nexus.main.compent.FileDialogHelp;
 import nexus.main.entry.MainForm;
 import table.std.SPDataTablePane;
 import org.jfree.chart.ChartUtilities;
+import sps.app.common.AppManager;
 import sps.app.std.StanderApp;
 import sps.app.std.WatchNode;
 import sps.dev.data.SSpectralDataPacket;
-import sps.platform.SpectralPlatService;
 import table.data.TSPData;
 
 /*
@@ -110,9 +109,9 @@ public class UIStanderApp extends javax.swing.JPanel {
     private StanderApp commapp;
 
     private void InitAppControl() {
-        commapp = SpectralPlatService.GetInstance().GetAppManager().GetCommonApp();
+        commapp = AppManager.R().GetCommonApp();
 
-        SpectralPlatService.GetInstance().GetAppManager().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
+        AppManager.R().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
             //更新控制面板使能状态
             ToggleButton_RMS.setEnabled(!event.GetEvent());
             Button_WatchNode.setEnabled(!event.GetEvent());

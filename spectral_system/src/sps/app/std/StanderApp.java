@@ -18,7 +18,6 @@ import nahon.comm.faultsystem.LogCenter;
 import nahon.comm.file2.FileReader2;
 import nahon.comm.file2.FileWriter2;
 import nahon.comm.file2.fileTable_W;
-import sps.app.common.AppManager;
 import sps.app.common.CTestApp;
 import sps.platform.SystemConfig;
 
@@ -27,10 +26,6 @@ import sps.platform.SystemConfig;
  * @author Administrator
  */
 public class StanderApp extends CTestApp {
-
-    public StanderApp(AppManager parent) {
-        super(parent);
-    }
 
     // <editor-fold defaultstate="collapsed" desc="snapshot操作">   
     private final ArrayList<SSpectralDataPacket> snapshots = new ArrayList();

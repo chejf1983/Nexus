@@ -19,13 +19,22 @@ import sps.platform.SpectralPlatService;
  */
 public class AppManager {
 
+    private static AppManager instance;
+    private AppManager(){}
+    public static AppManager R() {
+        if (instance == null) {
+            instance = new AppManager();
+        }
+        return instance;
+    }
+
     // <editor-fold defaultstate="collapsed" desc="app列表">  
     // <editor-fold defaultstate="collapsed" desc="Stander App">     
     private StanderApp comm_app;
 
     public StanderApp GetCommonApp() {
         if (this.comm_app == null) {
-            comm_app = new StanderApp(this);
+            comm_app = new StanderApp();
         }
         return this.comm_app;
     }
@@ -36,7 +45,7 @@ public class AppManager {
 
     public AbsApp GetAbsApp() {
         if (this.abs_app == null) {
-            abs_app = new AbsApp(this);
+            abs_app = new AbsApp();
         }
         return this.abs_app;
     }
@@ -47,7 +56,7 @@ public class AppManager {
 
     public TrsApp GetTrsApp() {
         if (this.trs_app == null) {
-            trs_app = new TrsApp(this);
+            trs_app = new TrsApp();
         }
         return this.trs_app;
     }
@@ -69,7 +78,7 @@ public class AppManager {
             this.currentApp = this.GetAbsApp();
             return;
         }
-        
+
         if (AppFlag.contentEquals(TrsApp.class.getSimpleName())) {
             this.currentApp = this.GetTrsApp();
             return;
@@ -91,10 +100,8 @@ public class AppManager {
 //    }
     // </editor-fold> 
 
-    public GlobalConfig TestConfig = new GlobalConfig();
-    public TimeConsume TimeFlag = new TimeConsume();
-
     // <editor-fold defaultstate="collapsed" desc="执行测试">  
+    public TimeConsume TimeFlag = new TimeConsume();
     private boolean is_running = false;
 
     public boolean IsRunning() {
