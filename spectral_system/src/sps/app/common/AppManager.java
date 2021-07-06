@@ -87,17 +87,6 @@ public class AppManager {
         LogCenter.Instance().SendFaultReport(Level.SEVERE, "未知模块" + AppFlag);
         this.currentApp = this.GetCommonApp();
     }
-//    private AbsorbeApp abs_app = new AbsorbeApp();
-//
-//    public AbsorbeApp GetAbsorbeApp() {
-//        return this.abs_app;
-//    }
-//
-//    private ReflectApp ref_app = new ReflectApp();
-//
-//    public ReflectApp GetReflectApp() {
-//        return this.ref_app;
-//    }
     // </editor-fold> 
 
     // <editor-fold defaultstate="collapsed" desc="执行测试">  
