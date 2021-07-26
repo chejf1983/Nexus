@@ -20,7 +20,6 @@ import static sps.app.common.CTestApp.TESTDATA;
 import sps.control.manager.ISpDevice;
 import sps.control.manager.SpDevManager;
 import sps.dev.data.SSpectralDataPacket;
-import sps.platform.SpectralPlatService;
 
 /**
  *
@@ -182,15 +181,9 @@ public class AbsApp extends CTestApp {
         }
 
         for (int i = 0; i < tmp.length; i++) {
-//            double tbase = base_data.data.datavalue[i] <= 0 ? 0.001d : base_data.data.datavalue[i];
             double tbase = base_data.data.datavalue[i];
             double tlast = data.data.datavalue[i] <= 0 ? 0.00001d : data.data.datavalue[i];
             tmp[i] = Math.log(Math.abs(tbase / tlast));
-//            if (tbase < tlast) {
-//                tmp[i] = 0 - Math.log10(tlast / tbase);
-//            } else {
-//                tmp[i] = Math.log10(tbase / tlast);
-//            }
             tmp[i] = new BigDecimal(tmp[i]).setScale(6, BigDecimal.ROUND_HALF_UP).doubleValue();
         }
 

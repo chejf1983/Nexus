@@ -5,12 +5,10 @@
  */
 package sps.app.common;
 
+import java.util.HashMap;
 import java.util.logging.Level;
 import nahon.comm.event.NEventCenter;
 import nahon.comm.faultsystem.LogCenter;
-import sps.app.absorb.AbsApp;
-import sps.app.std.StanderApp;
-import sps.app.transmit.TrsApp;
 import sps.platform.SpectralPlatService;
 
 /**
@@ -20,7 +18,10 @@ import sps.platform.SpectralPlatService;
 public class AppManager {
 
     private static AppManager instance;
-    private AppManager(){}
+
+    private AppManager() {
+    }
+
     public static AppManager R() {
         if (instance == null) {
             instance = new AppManager();
@@ -29,63 +30,23 @@ public class AppManager {
     }
 
     // <editor-fold defaultstate="collapsed" desc="app列表">  
-    // <editor-fold defaultstate="collapsed" desc="Stander App">     
-    private StanderApp comm_app;
-
-    public StanderApp GetCommonApp() {
-        if (this.comm_app == null) {
-            comm_app = new StanderApp();
-        }
-        return this.comm_app;
-    }
-    // </editor-fold> 
-
-    // <editor-fold defaultstate="collapsed" desc="Absorber App">     
-    private AbsApp abs_app;
-
-    public AbsApp GetAbsApp() {
-        if (this.abs_app == null) {
-            abs_app = new AbsApp();
-        }
-        return this.abs_app;
-    }
-    // </editor-fold> 
-
-    // <editor-fold defaultstate="collapsed" desc="Transmist App">     
-    private TrsApp trs_app;
-
-    public TrsApp GetTrsApp() {
-        if (this.trs_app == null) {
-            trs_app = new TrsApp();
-        }
-        return this.trs_app;
-    }
-    // </editor-fold> 
-
     public CTestApp GetCurrentApp() {
         return currentApp;
     }
 
-    private CTestApp currentApp = this.GetCommonApp();
+    private CTestApp currentApp = null;
+
+    private HashMap<String, CTestApp> appmap = new HashMap();
+
+    public void RegApp(String AppFlag, CTestApp app) {
+        appmap.put(AppFlag, app);
+    }
 
     public void SwitchApp(String AppFlag) {
-        if (AppFlag.contentEquals(StanderApp.class.getSimpleName())) {
-            this.currentApp = this.GetCommonApp();
-            return;
+        this.currentApp = appmap.get(AppFlag);
+        if (this.currentApp == null) {
+            LogCenter.Instance().SendFaultReport(Level.SEVERE, "未知模块" + AppFlag);
         }
-
-        if (AppFlag.contentEquals(AbsApp.class.getSimpleName())) {
-            this.currentApp = this.GetAbsApp();
-            return;
-        }
-
-        if (AppFlag.contentEquals(TrsApp.class.getSimpleName())) {
-            this.currentApp = this.GetTrsApp();
-            return;
-        }
-
-        LogCenter.Instance().SendFaultReport(Level.SEVERE, "未知模块" + AppFlag);
-        this.currentApp = this.GetCommonApp();
     }
     // </editor-fold> 
 

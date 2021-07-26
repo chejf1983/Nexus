@@ -15,10 +15,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import nexus.main.compent.FileDialogHelp;
+import nexus.main.entry.IAppUI;
 import nexus.main.entry.MainForm;
 import table.std.SPDataTablePane;
 import org.jfree.chart.ChartUtilities;
 import sps.app.common.AppManager;
+import sps.app.common.CTestApp;
 import sps.app.std.StanderApp;
 import sps.app.std.WatchNode;
 import sps.dev.data.SSpectralDataPacket;
@@ -32,7 +34,7 @@ import table.data.TSPData;
  *
  * @author jiche
  */
-public class UIStanderApp extends javax.swing.JPanel {
+public class UIStanderApp extends IAppUI {
 
     public UIStanderApp() {
         initComponents();
@@ -108,8 +110,13 @@ public class UIStanderApp extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="初始化App控制"> 
     private StanderApp commapp;
 
+    @Override
+    public CTestApp getApp(){
+        return this.commapp;
+    }
+    
     private void InitAppControl() {
-        commapp = AppManager.R().GetCommonApp();
+        commapp = new StanderApp();
 
         AppManager.R().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
             //更新控制面板使能状态

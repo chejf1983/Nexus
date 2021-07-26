@@ -6,25 +6,29 @@ package nexus.main.entry;
 
 import java.awt.CardLayout;
 import java.awt.Toolkit;
+import java.io.File;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButtonMenuItem;
 import nahon.comm.event.NEvent;
+import nahon.comm.exl2.xlsTable_R;
 import nahon.comm.faultsystem.LogCenter;
+import nahon.comm.file2.FileReader2;
 import nexus.app.absorbe.UIAbsorbeApp;
 
 import nexus.app.stander.UIStanderApp;
 import nexus.app.transmit.UITransApp;
 import nexus.device.manager.LeftPane;
 import nexus.main.compent.AboutDialog;
-import sps.app.absorb.AbsApp;
 import sps.app.common.AppManager;
-import sps.app.std.StanderApp;
-import sps.app.transmit.TrsApp;
 import sps.control.manager.SpDevManager;
 import sps.dev.data.SSCollectConfig;
 import sps.platform.SpectralPlatService;
@@ -37,6 +41,7 @@ import sps.platform.SystemConfig;
 public class MainForm extends javax.swing.JFrame {
 
     public static MainForm instance;
+
     /**
      * Creates new form MainForm
      */
@@ -67,7 +72,7 @@ public class MainForm extends javax.swing.JFrame {
         this.InitApplication();
 
         this.InitTailPane();
-        
+
         MainForm.instance = this;
     }
 
@@ -80,10 +85,8 @@ public class MainForm extends javax.swing.JFrame {
         String flag = SpectralPlatService.GetInstance().GetConfig().getProperty(SystemConfig.InternalFlag, "1");
         if (Integer.valueOf(flag) == 1) {
             this.setTitle("SpectralNexus-Internal");
-//            this.MenuItem_SynCalibrate.setVisible(true);
         } else {
             this.setTitle("SpectralNexus");
-            //           this.MenuItem_SynCalibrate.setVisible(false);
         }
 
     }
@@ -101,63 +104,58 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Application MenutItem Init"> 
     private CardLayout applicationAreaLayout = new CardLayout();
 
+    public JRadioButtonMenuItem RegAppUI(String name, IAppUI pane) {
+        JRadioButtonMenuItem item = new JRadioButtonMenuItem(name);
+        Menu_Application.add(item);
+        ApplicationGroup.add(item);
+
+        ApplicationArea.add(name, pane);
+        AppManager.R().RegApp(name, pane.getApp());
+        item.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
+            if (item.isSelected()) {
+                applicationAreaLayout.show(ApplicationArea, name);
+                AppManager.R().SwitchApp(name);
+            }
+        });
+        return item;
+    }
+
+    private void addExtModel(){
+        try (FileReader2 fr = FileReader2.OpenFile("./model.cfg")) {
+            while (true) {
+                xlsTable_R tb = fr.FindeNextTable();
+                if (tb == null) {
+                    return;
+                }
+                if (tb.rows.size() != 3) {
+                    continue;
+                }
+
+                URL url = new File("./lib/" + tb.rows.get(0)[0] + ".jar").toURI().toURL();
+                URLClassLoader loader = new URLClassLoader(new URL[]{url});
+                Class c = loader.loadClass(tb.rows.get(2)[0]);
+                IAppUI app = (IAppUI) c.newInstance();
+                RegAppUI(tb.rows.get(1)[0], app);
+            }
+        } catch (Exception ex) {
+            LogCenter.Instance().SendFaultReport(Level.SEVERE, ex);
+        }
+    }
+
     private void InitApplication() {
         AppManager.R().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
             //更新控制面板使能状态
             Menu_Application.setEnabled(!event.GetEvent());
         });
 
-        this.ApplicationGroup.add(this.MenuItem_Source);
-        this.ApplicationGroup.add(this.MenuItem_Color);
-        this.ApplicationGroup.add(this.MenuItem_Reflact);
-        this.ApplicationGroup.add(this.MenuItem_Absorbe);
-//        this.ApplicationGroup.add(this.MenuItem_TNP);
-        //this.ApplicationGroup.add(this.MenuItem_SynCalibrate);
-
         this.Menu_Application.setEnabled(false);
         this.ApplicationArea.setLayout(applicationAreaLayout);
 
-        ApplicationArea.add(UIStanderApp.class.getSimpleName(), new UIStanderApp());
-        MenuItem_Source.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
-            if (MenuItem_Source.isSelected()) {
-                applicationAreaLayout.show(ApplicationArea, UIStanderApp.class.getSimpleName());
-                AppManager.R().SwitchApp(StanderApp.class.getSimpleName());
-            }
-        });
-
-        MenuItem_Color.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
-            if (MenuItem_Color.isSelected()) {
-//                    applicationAreaLayout.show(ApplicationArea, Flag_ColorPane);
-            }
-        });
-
-        ApplicationArea.add(UITransApp.class.getSimpleName(), new UITransApp());
-        MenuItem_Reflact.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
-            if (MenuItem_Reflact.isSelected()) {
-                applicationAreaLayout.show(ApplicationArea, UITransApp.class.getSimpleName());
-                AppManager.R().SwitchApp(TrsApp.class.getSimpleName());
-            }
-        });
-        
-        ApplicationArea.add(UIAbsorbeApp.class.getSimpleName(), new UIAbsorbeApp());
-        MenuItem_Absorbe.addChangeListener((javax.swing.event.ChangeEvent evt) -> {
-            if (MenuItem_Absorbe.isSelected()) {
-                applicationAreaLayout.show(ApplicationArea, UIAbsorbeApp.class.getSimpleName());
-                AppManager.R().SwitchApp(AbsApp.class.getSimpleName());
-            }
-        });
-
-//        ApplicationArea.add(UITNPApp.class.getSimpleName(), new UITNPApp());
-//        MenuItem_TNP.addChangeListener(new javax.swing.event.ChangeListener() {
-//            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-//                if (MenuItem_TNP.isSelected()) {
-//                    applicationAreaLayout.show(ApplicationArea, UITNPApp.class.getSimpleName());
-////                    AppManager.R().SwitchApp(AppManager.AppType.ABSORBE);
-//                }
-//            }
-//        });
+        RegAppUI("原始光谱", new UIStanderApp()).setSelected(true);
+        RegAppUI("透射率", new UITransApp());
+        RegAppUI("吸光度", new UIAbsorbeApp());
+        addExtModel();
         Menu_Application.setEnabled(true);
-        this.MenuItem_Source.setSelected(true);
     }
     // </editor-fold> 
 
@@ -207,11 +205,6 @@ public class MainForm extends javax.swing.JFrame {
 //                MainForm.this.MenuItem_Japanese.setText("MenuItem_Japanese"));
 
         MainForm.this.Menu_Application.setText("应用");
-        MainForm.this.MenuItem_Source.setText("原始光谱");
-        MainForm.this.MenuItem_Color.setText("辐射测试");
-        MenuItem_Color.setVisible(false);
-        MainForm.this.MenuItem_Reflact.setText("透射率");
-        MainForm.this.MenuItem_Absorbe.setText("吸光度");
 //                MainForm.this.MenuItem_TNP.setText("MenuItem_TNP"));
 //                MainForm.this.MenuItem_SynCalibrate.setText("MenuItem_SynCalibrate"));
 
@@ -251,10 +244,6 @@ public class MainForm extends javax.swing.JFrame {
         Menu_File = new javax.swing.JMenu();
         MenuItem_Exit = new javax.swing.JMenuItem();
         Menu_Application = new javax.swing.JMenu();
-        MenuItem_Source = new javax.swing.JRadioButtonMenuItem();
-        MenuItem_Color = new javax.swing.JRadioButtonMenuItem();
-        MenuItem_Absorbe = new javax.swing.JRadioButtonMenuItem();
-        MenuItem_Reflact = new javax.swing.JRadioButtonMenuItem();
         Menu_config = new javax.swing.JMenu();
         MenuItem_Filter = new javax.swing.JCheckBoxMenuItem();
         Menu_Help = new javax.swing.JMenu();
@@ -354,23 +343,6 @@ public class MainForm extends javax.swing.JFrame {
         jMenuBar1.add(Menu_File);
 
         Menu_Application.setText("Application");
-
-        MenuItem_Source.setSelected(true);
-        MenuItem_Source.setText("Original");
-        Menu_Application.add(MenuItem_Source);
-
-        MenuItem_Color.setSelected(true);
-        MenuItem_Color.setText("Color");
-        Menu_Application.add(MenuItem_Color);
-
-        MenuItem_Absorbe.setSelected(true);
-        MenuItem_Absorbe.setText("Absorbe");
-        Menu_Application.add(MenuItem_Absorbe);
-
-        MenuItem_Reflact.setSelected(true);
-        MenuItem_Reflact.setText("jRadioButtonMenuItem1");
-        Menu_Application.add(MenuItem_Reflact);
-
         jMenuBar1.add(Menu_Application);
 
         Menu_config.setText("设置");
@@ -449,12 +421,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel Label_time;
     private javax.swing.ButtonGroup LanguageGroup;
     private javax.swing.JMenuItem MenuItem_About;
-    private javax.swing.JRadioButtonMenuItem MenuItem_Absorbe;
-    private javax.swing.JRadioButtonMenuItem MenuItem_Color;
     private javax.swing.JMenuItem MenuItem_Exit;
     private javax.swing.JCheckBoxMenuItem MenuItem_Filter;
-    private javax.swing.JRadioButtonMenuItem MenuItem_Reflact;
-    private javax.swing.JRadioButtonMenuItem MenuItem_Source;
     private javax.swing.JMenu Menu_Application;
     private javax.swing.JMenu Menu_File;
     private javax.swing.JMenu Menu_Help;

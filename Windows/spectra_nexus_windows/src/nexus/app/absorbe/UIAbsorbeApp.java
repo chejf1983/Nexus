@@ -9,12 +9,13 @@ import nahon.comm.faultsystem.LogCenter;
 import java.io.IOException;
 import nexus.main.compent.FileDialogHelp;
 import nexus.main.compent.ImageHelper;
+import nexus.main.entry.IAppUI;
 import org.jfree.chart.ChartUtilities;
 import sps.app.absorb.AbsApp;
 import sps.app.absorb.RateData;
 import sps.app.common.AppManager;
+import sps.app.common.CTestApp;
 import sps.dev.data.SSpectralDataPacket;
-import sps.platform.SpectralPlatService;
 
 /*
  * To change this template, choose Tools | Templates
@@ -24,7 +25,7 @@ import sps.platform.SpectralPlatService;
  *
  * @author jiche
  */
-public class UIAbsorbeApp extends javax.swing.JPanel {
+public class UIAbsorbeApp extends IAppUI {
 
     public UIAbsorbeApp() {
         initComponents();
@@ -71,8 +72,14 @@ public class UIAbsorbeApp extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="初始化App控制"> 
     private AbsApp commapp;
 
+    @Override
+    public CTestApp getApp(){
+        return this.commapp;
+    }
+    
     private void InitAppControl() {
-        commapp = AppManager.R().GetAbsApp();
+        commapp = new AbsApp();
+         AppManager.R().RegApp(AbsApp.class.getName(), commapp);
 
         AppManager.R().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
             //更新控制面板使能状态

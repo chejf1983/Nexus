@@ -11,7 +11,6 @@ import java.awt.CardLayout;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JSplitPane;
-import sps.dev.data.SSpectralDataPacket;
 import table.data.TSPData;
 import table.std.SPDataTablePane;
 

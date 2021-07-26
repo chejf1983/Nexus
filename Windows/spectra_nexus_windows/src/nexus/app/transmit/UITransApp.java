@@ -10,10 +10,12 @@ import java.io.IOException;
 import nahon.comm.event.NEvent;
 import nexus.main.compent.FileDialogHelp;
 import nexus.main.compent.ImageHelper;
+import nexus.main.entry.IAppUI;
 import org.jfree.chart.ChartUtilities;
 import sps.app.absorb.AbsApp;
 import sps.app.absorb.RateData;
 import sps.app.common.AppManager;
+import sps.app.common.CTestApp;
 import sps.app.transmit.TrsApp;
 import sps.dev.data.SSpectralDataPacket;
 
@@ -25,7 +27,7 @@ import sps.dev.data.SSpectralDataPacket;
  *
  * @author jiche
  */
-public class UITransApp extends javax.swing.JPanel {
+public class UITransApp extends IAppUI {
 
     public UITransApp() {
         initComponents();
@@ -72,8 +74,11 @@ public class UITransApp extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="初始化App控制"> 
     private TrsApp commapp;
 
+    public CTestApp getApp(){
+        return this.commapp;
+    }
     private void InitAppControl() {
-        commapp = AppManager.R().GetTrsApp();
+        commapp = new TrsApp();
 
         AppManager.R().TestEvent.RegeditListener((NEvent<Boolean> event) -> {
             //更新控制面板使能状态

@@ -12,7 +12,6 @@ import nahon.comm.faultsystem.LogCenter;
 import sps.control.manager.ISpDevice;
 import sps.control.manager.SpDevManager;
 import sps.dev.data.SSpectralDataPacket;
-import sps.platform.SpectralPlatService;
 
 /**
  *
